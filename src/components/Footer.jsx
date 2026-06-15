@@ -50,12 +50,17 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/5 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[11px] text-gray-600">
-            © 2026 Parivestra Ventures. All rights reserved. This platform is an educational and research resource. We do not process payments.
-          </p>
-          <p className="text-[11px] text-gray-700 text-center sm:text-right max-w-md">
-            All product names, trademarks, and brand names are the property of their respective owners and are used here for informational reference only.
+        <div className="border-t border-white/5 py-6 space-y-2">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p className="text-[11px] text-gray-600">
+              © 2026 Parivestra Ventures. All rights reserved. Educational & research resource only — we do not process payments.
+            </p>
+            <p className="text-[11px] text-gray-700 text-center sm:text-right">
+              All trademarks belong to their respective owners and are referenced here for informational purposes only.
+            </p>
+          </div>
+          <p className="text-[10px] text-gray-700 text-center sm:text-left">
+            Data & statistics referenced from: NPCI, RBI, Baymard Institute, PCI SSC, Worldpay FIS, McKinsey, Stripe, Razorpay, Statista, Juniper Research, VISA & MeitY — used for educational reference only.
           </p>
         </div>
       </div>

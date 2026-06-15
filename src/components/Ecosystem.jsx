@@ -2,92 +2,122 @@ const categories = [
   {
     icon: '⚡',
     title: 'Payment Gateways',
-    desc: 'Compare gateway features, fees, supported markets, settlement timelines, and developer experience across leading providers.',
-    tags: ['Stripe', 'Razorpay', 'Adyen', 'Braintree'],
+    desc: 'Compare gateway fees, settlement times, supported markets, and developer experience across India and global providers.',
+    tags: ['Stripe', 'Razorpay', 'Adyen', 'Cashfree'],
     color: 'indigo',
   },
   {
     icon: '📱',
-    title: 'UPI Infrastructure',
-    desc: 'Understand UPI rails, payment apps, merchant onboarding, deep linking, QR flows, and UPI AutoPay for Indian markets.',
-    tags: ['UPI', 'BHIM', 'PhonePe', 'Google Pay'],
+    title: 'UPI & Digital Payments',
+    desc: 'UPI rails, QR flows, UPI AutoPay for subscriptions, BHIM, and India\'s real-time payment infrastructure for merchants.',
+    tags: ['UPI', 'PhonePe', 'Google Pay', 'BHIM'],
     color: 'violet',
   },
   {
     icon: '🏢',
     title: 'Merchant of Record',
-    desc: 'Explore MoR solutions that handle tax compliance, global payments, and regulatory requirements on your behalf.',
+    desc: 'MoR platforms that handle global tax, compliance, and VAT/GST so you can sell software and digital products worldwide.',
     tags: ['Paddle', 'Lemon Squeezy', 'FastSpring'],
     color: 'purple',
   },
   {
     icon: '🔄',
     title: 'Subscription Billing',
-    desc: 'Navigate recurring billing platforms, dunning management, revenue recognition, and subscriber lifecycle tools.',
+    desc: 'Recurring billing platforms, dunning management, churn recovery, and subscriber lifecycle tools for SaaS and D2C.',
     tags: ['Chargebee', 'Recurly', 'Stripe Billing'],
     color: 'blue',
   },
   {
+    icon: '🛍️',
+    title: 'BNPL & Digital Wallets',
+    desc: 'Buy Now Pay Later fintech solutions and digital wallet integrations that increase average order value and conversion.',
+    tags: ['Simpl', 'LazyPay', 'Klarna', 'Paytm'],
+    color: 'pink',
+  },
+  {
     icon: '🔌',
-    title: 'Payment APIs',
-    desc: 'Developer-focused analysis of payment API quality, documentation depth, SDK support, and webhook reliability.',
-    tags: ['REST APIs', 'Webhooks', 'SDKs', 'Libraries'],
+    title: 'Payment APIs & SDKs',
+    desc: 'Developer-focused comparison of fintech payment APIs, webhook reliability, SDK quality, and integration complexity.',
+    tags: ['REST APIs', 'Webhooks', 'SDKs', 'Docs'],
     color: 'cyan',
   },
   {
     icon: '🛒',
-    title: 'Checkout Systems',
-    desc: 'Evaluate hosted checkouts, embedded flows, one-click solutions, and conversion-optimized checkout builders.',
-    tags: ['Hosted', 'Embedded', 'One-Click', 'Custom'],
+    title: 'Checkout Optimization',
+    desc: 'Hosted checkouts, embedded flows, one-click buying, and conversion-focused checkout design for ecommerce stores.',
+    tags: ['Hosted', 'Embedded', 'One-Click', 'Shop Pay'],
     color: 'teal',
   },
   {
     icon: '🛡️',
     title: 'Fraud Prevention',
-    desc: 'Research adaptive fraud detection, machine learning risk scoring, chargeback management, and 3DS2 implementations.',
+    desc: 'Adaptive fraud detection, ML risk scoring, chargeback management, 3DS2, and KYC tools for payment security.',
     tags: ['ML Scoring', 'Chargebacks', '3DS2', 'KYC'],
     color: 'rose',
   },
   {
     icon: '🌐',
     title: 'Cross-Border Payments',
-    desc: 'Understand FX rates, local acquiring, SWIFT alternatives, multi-currency settlement, and cross-border compliance.',
-    tags: ['FX', 'Local Acquiring', 'Multi-Currency'],
+    desc: 'FX rates, local acquiring, SWIFT alternatives, multi-currency settlement, and fintech solutions for global expansion.',
+    tags: ['FX', 'Local Acquiring', 'SWIFT', 'Multi-Currency'],
     color: 'amber',
+  },
+  {
+    icon: '🏦',
+    title: 'Embedded Finance',
+    desc: 'Banking-as-a-Service, embedded lending, virtual accounts, and fintech infrastructure for platforms and marketplaces.',
+    tags: ['BaaS', 'Virtual Accounts', 'Lending', 'Payouts'],
+    color: 'emerald',
+  },
+  {
+    icon: '📊',
+    title: 'Payment Orchestration',
+    desc: 'Multi-gateway routing, fallback logic, and intelligent transaction routing to maximize authorization rates at scale.',
+    tags: ['Routing', 'Failover', 'Cost Optimization'],
+    color: 'sky',
+  },
+  {
+    icon: '⚖️',
+    title: 'Compliance & Regulation',
+    desc: 'PCI DSS, RBI payment regulations, 3DS2, AML, KYC, GDPR, and what Indian and global compliance means for your stack.',
+    tags: ['PCI DSS', 'RBI', 'KYC/AML', 'GDPR'],
+    color: 'orange',
   },
 ]
 
 const colorMap = {
-  indigo: { bg: 'bg-indigo-50', border: 'border-indigo-100', text: 'text-indigo-700', tag: 'bg-indigo-100 text-indigo-700' },
-  violet: { bg: 'bg-violet-50', border: 'border-violet-100', text: 'text-violet-700', tag: 'bg-violet-100 text-violet-700' },
-  purple: { bg: 'bg-purple-50', border: 'border-purple-100', text: 'text-purple-700', tag: 'bg-purple-100 text-purple-700' },
-  blue: { bg: 'bg-blue-50', border: 'border-blue-100', text: 'text-blue-700', tag: 'bg-blue-100 text-blue-700' },
-  cyan: { bg: 'bg-cyan-50', border: 'border-cyan-100', text: 'text-cyan-700', tag: 'bg-cyan-100 text-cyan-700' },
-  teal: { bg: 'bg-teal-50', border: 'border-teal-100', text: 'text-teal-700', tag: 'bg-teal-100 text-teal-700' },
-  rose: { bg: 'bg-rose-50', border: 'border-rose-100', text: 'text-rose-700', tag: 'bg-rose-100 text-rose-700' },
-  amber: { bg: 'bg-amber-50', border: 'border-amber-100', text: 'text-amber-700', tag: 'bg-amber-100 text-amber-700' },
+  indigo:  { bg: 'bg-indigo-50',  border: 'border-indigo-100',  text: 'text-indigo-700',  tag: 'bg-indigo-100 text-indigo-700'  },
+  violet:  { bg: 'bg-violet-50',  border: 'border-violet-100',  text: 'text-violet-700',  tag: 'bg-violet-100 text-violet-700'  },
+  purple:  { bg: 'bg-purple-50',  border: 'border-purple-100',  text: 'text-purple-700',  tag: 'bg-purple-100 text-purple-700'  },
+  blue:    { bg: 'bg-blue-50',    border: 'border-blue-100',    text: 'text-blue-700',    tag: 'bg-blue-100 text-blue-700'    },
+  pink:    { bg: 'bg-pink-50',    border: 'border-pink-100',    text: 'text-pink-700',    tag: 'bg-pink-100 text-pink-700'    },
+  cyan:    { bg: 'bg-cyan-50',    border: 'border-cyan-100',    text: 'text-cyan-700',    tag: 'bg-cyan-100 text-cyan-700'    },
+  teal:    { bg: 'bg-teal-50',    border: 'border-teal-100',    text: 'text-teal-700',    tag: 'bg-teal-100 text-teal-700'    },
+  rose:    { bg: 'bg-rose-50',    border: 'border-rose-100',    text: 'text-rose-700',    tag: 'bg-rose-100 text-rose-700'    },
+  amber:   { bg: 'bg-amber-50',   border: 'border-amber-100',   text: 'text-amber-700',   tag: 'bg-amber-100 text-amber-700'   },
+  emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-700', tag: 'bg-emerald-100 text-emerald-700' },
+  sky:     { bg: 'bg-sky-50',     border: 'border-sky-100',     text: 'text-sky-700',     tag: 'bg-sky-100 text-sky-700'     },
+  orange:  { bg: 'bg-orange-50',  border: 'border-orange-100',  text: 'text-orange-700',  tag: 'bg-orange-100 text-orange-700'  },
 }
 
 export default function Ecosystem() {
   return (
     <section id="ecosystem" className="py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 rounded-full px-4 py-1.5 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-            <span className="text-xs font-semibold text-indigo-700 tracking-wide uppercase">Payments Ecosystem</span>
+            <span className="text-xs font-semibold text-indigo-700 tracking-wide uppercase">Fintech & Payments Ecosystem</span>
           </div>
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight leading-tight">
-            Explore the entire ecommerce{' '}
-            <span className="gradient-text">payments landscape</span>
+            Every fintech payment topic{' '}
+            <span className="gradient-text">your business needs to understand</span>
           </h2>
           <p className="mt-4 text-lg text-gray-500 leading-relaxed">
-            From gateways to global infrastructure — research every layer of the modern payments stack with depth and clarity.
+            From UPI and BNPL to payment orchestration and cross-border fintech — research every layer of the modern payments stack.
           </p>
         </div>
 
-        {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {categories.map(cat => {
             const c = colorMap[cat.color]
@@ -96,8 +126,7 @@ export default function Ecosystem() {
                 key={cat.title}
                 className="group bg-white border border-gray-100 rounded-2xl p-6 card-hover cursor-pointer relative overflow-hidden"
               >
-                {/* Hover accent */}
-                <div className={`absolute inset-x-0 top-0 h-0.5 ${c.bg.replace('bg-', 'bg-').replace('-50', '-400')} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                <div className={`absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-current to-transparent ${c.text} opacity-0 group-hover:opacity-30 transition-opacity duration-300`} />
 
                 <div className={`w-11 h-11 ${c.bg} ${c.border} border rounded-xl flex items-center justify-center text-xl mb-4`}>
                   {cat.icon}
