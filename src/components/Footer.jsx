@@ -52,7 +52,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/5 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[11px] text-gray-600">
-            © 2025 Parivestra. All rights reserved. This platform is an educational and research resource. We do not process payments.
+            © 2026 Parivestra Ventures. All rights reserved. This platform is an educational and research resource. We do not process payments.
           </p>
           <p className="text-[11px] text-gray-700 text-center sm:text-right max-w-md">
             All product names, trademarks, and brand names are the property of their respective owners and are used here for informational reference only.
