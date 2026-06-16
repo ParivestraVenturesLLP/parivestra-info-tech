@@ -1,36 +1,54 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary SEO -->
-    <title>Fintech & Ecommerce Payments Guide — Gateway Comparisons, UPI, Checkout & More | Parivestra</title>
-    <meta name="description" content="The complete fintech and ecommerce payments resource. Compare payment gateways (Stripe, Razorpay, PayPal, Adyen, Cashfree), understand UPI infrastructure, digital wallets, BNPL, payment APIs, checkout optimization, and fintech payment solutions for Indian and global businesses. Free guides by Parivestra." />
-    <meta name="keywords" content="fintech payment solutions, fintech companies India, digital payments India, best payment gateway ecommerce, payment gateway comparison India, Stripe vs Razorpay, Razorpay vs Cashfree, UPI payment gateway, UPI AutoPay, merchant of record, Paddle vs Stripe, ecommerce payment integration, checkout optimization, subscription billing platform, cross border payments, fintech for startups, fintech checkout, payment API comparison, digital wallet India, BNPL fintech, buy now pay later ecommerce, payment orchestration, open banking India, embedded payments, real-time payments, instant payments fintech, fintech compliance PCI DSS, payment gateway fees India, Shopify payment gateway, WooCommerce payments, D2C payment gateway, SaaS payment gateway, fintech payment processing, payment technology, online payment methods India, fintech innovation, neobank payments, payment automation, fintech solutions ecommerce, Adyen vs Stripe, PayPal India, Cashfree payments, PhonePe business, Google Pay merchant, ecommerce checkout guide, reduce cart abandonment payments, payment infrastructure guide, fintech market India, RBI payment regulations, NPCI UPI, digital India payments" />
+    <title>Payment Gateway Comparison & Fintech Guides — Parivestra Blog</title>
+    <meta name="description" content="In-depth payment gateway comparisons, fintech guides, UPI infrastructure, checkout optimization, subscription billing, cross-border payments, and payment API reviews for Indian and global ecommerce. Free by Parivestra." />
+    <meta name="keywords" content="payment gateway, payment processing, payment integration, payment solutions, fintech, merchant services, ecommerce payments, payment APIs, UPI payments, subscription billing, cross-border payments, checkout optimization, Stripe, Razorpay, Cashfree, Adyen, PayPal, Paddle, payment gateway comparison India, fintech payment solutions" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="author" content="Parivestra" />
-    <link rel="canonical" href="https://payments.parivestra.com/" />
+    <link rel="canonical" href="https://blog.parivestra.com/" />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="https://blog.parivestra.com/" />
+    <link rel="alternate" hreflang="en-IN" href="https://blog.parivestra.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://blog.parivestra.com/" />
 
     <!-- Geo targeting for India -->
     <meta name="geo.region" content="IN" />
     <meta name="geo.placename" content="India" />
     <meta name="language" content="English" />
+    <meta name="content-language" content="en-IN" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://payments.parivestra.com/" />
-    <meta property="og:title" content="Fintech & Ecommerce Payments Guide | Parivestra" />
-    <meta property="og:description" content="Compare payment gateways, learn about UPI, fintech payment solutions, checkout optimization, BNPL, and digital payment infrastructure for Indian and global ecommerce businesses." />
-    <meta property="og:site_name" content="Parivestra Payments Intelligence Hub" />
+    <meta property="og:url" content="https://blog.parivestra.com/" />
+    <meta property="og:title" content="Payment Gateway Comparison & Fintech Guides | Parivestra Blog" />
+    <meta property="og:description" content="Compare payment gateways, learn UPI infrastructure, fintech payment solutions, checkout optimization, subscription billing, cross-border payments, and payment APIs for Indian and global ecommerce." />
+    <meta property="og:site_name" content="Parivestra Blog — Payments & Fintech Intelligence" />
     <meta property="og:locale" content="en_IN" />
+    <meta property="og:image" content="https://blog.parivestra.com/og-default.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Parivestra Blog — Payment Gateway & Fintech Intelligence Hub" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Fintech & Ecommerce Payments Guide | Parivestra" />
-    <meta name="twitter:description" content="The complete fintech payment resource — gateway comparisons, UPI guides, checkout optimization, subscription billing, and fintech payment intelligence. Free by Parivestra." />
+    <meta name="twitter:site" content="@parivestra" />
     <meta name="twitter:creator" content="@parivestra" />
+    <meta name="twitter:title" content="Payment Gateway Comparison & Fintech Guides | Parivestra Blog" />
+    <meta name="twitter:description" content="The complete fintech payment resource — gateway comparisons, UPI guides, checkout optimization, subscription billing, and payment API reviews. Free by Parivestra." />
+    <meta name="twitter:image" content="https://blog.parivestra.com/og-default.png" />
+
+    <!-- LinkedIn -->
+    <meta property="og:image:secure_url" content="https://blog.parivestra.com/og-default.png" />
+
+    <!-- Speakable (for voice search & AI) -->
+    <meta name="speakable-selector" content="h1, h2, .speakable, .ai-answer" />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -42,39 +60,82 @@
           "@id": "https://parivestra.com/#organization",
           "name": "Parivestra",
           "url": "https://parivestra.com",
-          "description": "Parivestra helps brands grow through modern distribution, performance marketing, data-led execution, influencer ecosystems, affiliate infrastructure, and growth intelligence.",
-          "sameAs": []
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.parivestra.com/favicon.svg",
+            "width": 512,
+            "height": 512
+          },
+          "description": "Parivestra helps brands grow through modern distribution, performance marketing, data-led execution, and growth intelligence.",
+          "sameAs": [
+            "https://twitter.com/parivestra",
+            "https://www.linkedin.com/company/parivestra"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "email": "accounts@parivestra.com"
+          }
         },
         {
           "@type": "WebSite",
-          "@id": "https://payments.parivestra.com/#website",
-          "url": "https://payments.parivestra.com/",
-          "name": "Parivestra Ecommerce Payments & Fintech Intelligence Hub",
-          "description": "Free research and guides on fintech payments, payment gateways, UPI, checkout optimization, BNPL, digital wallets, and ecommerce payment infrastructure.",
+          "@id": "https://blog.parivestra.com/#website",
+          "url": "https://blog.parivestra.com/",
+          "name": "Parivestra Blog — Payments & Fintech Intelligence",
+          "description": "In-depth guides on payment gateways, payment processing, fintech payment solutions, UPI, checkout optimization, subscription billing, and ecommerce payment APIs.",
           "publisher": { "@id": "https://parivestra.com/#organization" },
+          "inLanguage": "en-IN",
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://payments.parivestra.com/?s={search_term_string}",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://blog.parivestra.com/?s={search_term_string}"
+            },
             "query-input": "required name=search_term_string"
           }
         },
         {
+          "@type": "Blog",
+          "@id": "https://blog.parivestra.com/#blog",
+          "url": "https://blog.parivestra.com/",
+          "name": "Parivestra Payments & Fintech Blog",
+          "description": "Free research and guides on fintech payments, payment gateways, UPI, checkout optimization, subscription billing, cross-border payments, and ecommerce payment infrastructure.",
+          "publisher": { "@id": "https://parivestra.com/#organization" },
+          "inLanguage": "en-IN",
+          "about": [
+            { "@type": "Thing", "name": "Payment Gateway", "sameAs": "https://en.wikipedia.org/wiki/Payment_gateway" },
+            { "@type": "Thing", "name": "Fintech", "sameAs": "https://en.wikipedia.org/wiki/Financial_technology" },
+            { "@type": "Thing", "name": "Unified Payments Interface", "sameAs": "https://en.wikipedia.org/wiki/Unified_Payments_Interface" },
+            { "@type": "Thing", "name": "Payment Processing", "sameAs": "https://en.wikipedia.org/wiki/Payment_processor" },
+            { "@type": "Thing", "name": "Subscription Billing" },
+            { "@type": "Thing", "name": "Cross-border Payments" },
+            { "@type": "Thing", "name": "Checkout Optimization" }
+          ]
+        },
+        {
           "@type": "WebPage",
-          "@id": "https://payments.parivestra.com/#webpage",
-          "url": "https://payments.parivestra.com/",
-          "name": "Fintech & Ecommerce Payments Guide — Gateway Comparisons, UPI, Checkout & More",
-          "isPartOf": { "@id": "https://payments.parivestra.com/#website" },
+          "@id": "https://blog.parivestra.com/#webpage",
+          "url": "https://blog.parivestra.com/",
+          "name": "Payment Gateway Comparison & Fintech Guides — Parivestra Blog",
+          "isPartOf": { "@id": "https://blog.parivestra.com/#website" },
           "about": { "@id": "https://parivestra.com/#organization" },
-          "description": "Compare fintech payment solutions, understand UPI infrastructure, evaluate payment gateways, and choose the right payment stack for your ecommerce or SaaS business.",
+          "description": "Compare payment gateways, understand UPI infrastructure, evaluate payment APIs, and choose the right payment stack for your ecommerce or SaaS business.",
+          "inLanguage": "en-IN",
+          "datePublished": "2025-01-01",
+          "dateModified": "2026-06-16",
           "speakable": {
             "@type": "SpeakableSpecification",
-            "cssSelector": ["h1", "h2", ".speakable"]
+            "cssSelector": ["h1", "h2", ".speakable", ".ai-answer", ".key-takeaway"]
           },
           "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://payments.parivestra.com/" },
-              { "@type": "ListItem", "position": 2, "name": "Payment Intelligence Hub", "item": "https://payments.parivestra.com/#ecosystem" }
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://blog.parivestra.com/"
+              }
             ]
           }
         },
@@ -83,18 +144,18 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "What is the best fintech payment solution for ecommerce in India?",
+              "name": "What is the best payment gateway for ecommerce in India?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "For Indian ecommerce, Razorpay and Cashfree are the leading fintech payment solutions because they support UPI (the #1 digital payment method in India), net banking, RuPay cards, and UPI AutoPay for subscriptions. Razorpay has broader product depth. Cashfree is known for faster, sometimes same-day settlements. For international sales, add Stripe alongside an Indian gateway."
+                "text": "For Indian ecommerce, Razorpay and Cashfree are the top payment gateways. Razorpay has broader product depth — UPI, net banking, RuPay cards, UPI AutoPay for subscriptions, payment links, and payouts. Cashfree is known for faster settlements, often same-day. For international customers, add Stripe alongside your Indian gateway. The best gateway depends on your transaction volume, category, and customer mix."
               }
             },
             {
               "@type": "Question",
-              "name": "What is the best payment gateway for ecommerce in India?",
+              "name": "What is a payment gateway and how does it work?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Razorpay and Cashfree are the top payment gateways for Indian ecommerce. Razorpay supports UPI, net banking, RuPay, and has the widest product suite including UPI AutoPay, payment links, and payouts. Cashfree offers faster settlements. For international customers, Stripe or PayPal should be added alongside."
+                "text": "A payment gateway is a technology service that securely captures and transmits payment data between a customer, merchant, and bank during an online transaction. It encrypts sensitive card or UPI data, routes it to the payment processor, gets authorization from the issuing bank, and returns a success or failure response — all in under 2 seconds. Examples: Stripe, Razorpay, Cashfree, Adyen, PayPal."
               }
             },
             {
@@ -102,118 +163,122 @@
               "name": "How does UPI work for ecommerce businesses?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "UPI (Unified Payments Interface) is India's real-time payment system built by NPCI. For ecommerce merchants, UPI works through payment gateways like Razorpay and Cashfree which generate a UPI collect request or QR code at checkout. The customer approves it in their UPI app (PhonePe, Google Pay, Paytm, BHIM). Settlement happens within 24–48 hours. For subscriptions, UPI AutoPay (eMandate) enables recurring deductions after a one-time approval from the customer."
+                "text": "UPI (Unified Payments Interface) is India's real-time payment system built by NPCI. For ecommerce merchants, UPI works through payment gateways like Razorpay and Cashfree which generate a UPI collect request or QR code at checkout. The customer approves the payment in their UPI app (PhonePe, Google Pay, Paytm, BHIM). Settlement happens within 24–48 hours. For subscriptions, UPI AutoPay (eMandate) enables recurring deductions after a one-time customer approval."
               }
             },
             {
               "@type": "Question",
-              "name": "What is the difference between a fintech payment solution and a traditional payment gateway?",
+              "name": "What is the difference between Stripe and Razorpay?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Traditional payment gateways focus on card transaction processing. Modern fintech payment solutions like Razorpay, Stripe, and Cashfree go far beyond — they include UPI, digital wallets, BNPL, payouts, subscription billing, fraud detection, and payment analytics in a single integrated platform. Fintech solutions are typically API-first, faster to integrate, and include business banking features like current accounts and payouts."
+                "text": "Stripe is a global developer-first payment gateway best suited for international sales and SaaS businesses. Razorpay is India's leading payment gateway with deep UPI support, net banking, RuPay cards, and UPI AutoPay — payment methods Stripe does not support in India. Many Indian businesses use both: Razorpay for domestic customers and Stripe for international orders."
               }
             },
             {
               "@type": "Question",
-              "name": "What is BNPL and which fintech companies offer it for ecommerce?",
+              "name": "What is a Merchant of Record (MoR) in payments?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "BNPL (Buy Now Pay Later) lets customers split their purchase into installments, often interest-free for a short period. For Indian ecommerce, Simpl, ZestMoney, LazyPay, and Razorpay's Pay Later are the main BNPL fintech options. Globally, Klarna, Afterpay, and Affirm are dominant. Adding BNPL at checkout typically increases average order value by 15–30%."
+                "text": "A Merchant of Record (MoR) like Paddle or Lemon Squeezy acts as the legal seller of your products globally. They collect payments, handle VAT/GST in every country, file taxes, and remit net revenue to you. Use an MoR if you sell software or digital products globally and want to avoid registering for tax in 40+ countries. The trade-off is a higher fee (4–5%+) versus ~2% with a direct payment gateway."
               }
             },
             {
               "@type": "Question",
-              "name": "Should I use Stripe or Razorpay for my ecommerce store?",
+              "name": "What payment methods should Indian ecommerce stores support?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Use Razorpay if your customers are primarily in India — it supports UPI, net banking, and RuPay which Stripe does not in India. Use Stripe if you're selling internationally or need a globally consistent developer experience. Many Indian businesses use both: Razorpay for domestic customers and Stripe for international orders."
+                "text": "UPI is non-negotiable for India — it accounts for over 50% of digital payment volume (source: NPCI). Beyond UPI: debit and credit cards (RuPay, Visa, Mastercard), net banking, and digital wallets (Paytm, PhonePe). For subscriptions, UPI AutoPay is critical. BNPL options like Simpl and LazyPay increase conversions for higher-value purchases."
               }
             },
             {
               "@type": "Question",
-              "name": "What is a Merchant of Record (MoR) and when should I use one?",
+              "name": "What is checkout optimization in ecommerce?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "A Merchant of Record like Paddle or Lemon Squeezy becomes the legal seller of your products globally and handles VAT, GST, and tax compliance in every country on your behalf. Use an MoR if you sell software or digital products globally and want to avoid registering for tax in 40+ countries. The trade-off is a higher fee (4–5%+) versus ~2% with a direct gateway."
+                "text": "Checkout optimization is the process of reducing friction in the payment flow to increase conversion rates and reduce cart abandonment (industry average: 70%, per Baymard Institute). Key techniques include: fewer checkout steps, pre-filled payment forms, displaying familiar payment method logos, no surprise fees, one-click checkout for returning customers, and showing trust badges like SSL and PCI compliance indicators."
               }
             },
             {
               "@type": "Question",
-              "name": "What is payment orchestration and does my ecommerce business need it?",
+              "name": "What is subscription billing and how does it work?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Payment orchestration is a layer that sits above multiple gateways and intelligently routes each transaction to the best gateway based on cost, conversion rate, geography, or card type. You typically need payment orchestration when you're processing high volumes (₹10Cr+/month) across multiple markets and the difference in authorization rates between gateways meaningfully impacts revenue."
+                "text": "Subscription billing is an automated recurring payment model where customers are charged on a regular schedule (monthly, annually) for ongoing access to a product or service. Platforms like Stripe Billing, Chargebee, and Recurly handle subscription creation, invoicing, dunning (failed payment recovery), proration, and churn prevention. In India, UPI AutoPay enables subscription billing through standing mandates."
               }
             },
             {
               "@type": "Question",
-              "name": "What payment methods should I support for Indian customers?",
+              "name": "What is payment integration and how do I add a payment gateway to my website?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "UPI is non-negotiable for India — it accounts for over 50% of digital payment volume. Beyond UPI: debit/credit cards (RuPay, Visa, Mastercard), net banking, and digital wallets (Paytm, PhonePe). For subscriptions, UPI AutoPay is critical. BNPL options like Simpl and LazyPay increase conversions for higher-value purchases. Data source: NPCI Payment System Indicators."
+                "text": "Payment integration is the technical process of connecting a payment gateway to your website or app. Methods include: (1) Hosted checkout — redirect customers to the gateway's payment page (easiest, most secure); (2) Embedded checkout — use JavaScript SDKs like Stripe.js or Razorpay Checkout.js to show payment fields within your site; (3) API integration — call the gateway's REST API directly for full control. Most ecommerce platforms (Shopify, WooCommerce) have pre-built payment gateway plugins."
               }
             },
             {
               "@type": "Question",
-              "name": "How do payment gateway fees work for Indian ecommerce?",
+              "name": "What are cross-border payment solutions for ecommerce?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Indian payment gateways (Razorpay, Cashfree) typically charge 1.75%–2% for domestic card transactions. UPI transactions may have zero or very low fees. International card transactions add 1–1.5% for currency conversion on top. Also watch for: setup fees, AMC (annual maintenance charges), chargeback fees (₹500–₹1000 per dispute), and refund fees. Always compare the all-in cost at your actual transaction mix."
+                "text": "Cross-border payment solutions enable merchants to accept payments from customers in different countries. Key considerations: multi-currency support, local payment methods (iDEAL in Netherlands, PIX in Brazil, Alipay in China), FX conversion fees (typically 1–3%), local acquiring to improve authorization rates, and compliance with local regulations. Stripe, Adyen, and PayPal have the broadest cross-border coverage. For Indian merchants selling globally, combine Razorpay (domestic) with Stripe (international)."
               }
             },
             {
               "@type": "Question",
-              "name": "What PCI compliance does my Indian ecommerce store need?",
+              "name": "What PCI DSS compliance does my ecommerce store need?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "If you use a hosted checkout or payment page from Razorpay, Cashfree, Stripe, or PayPal (the customer redirects to their page), you qualify for PCI DSS SAQ A — the simplest compliance path. This requires a short self-assessment questionnaire. You only need full SAQ D if you store raw card data yourself, which modern integrations never require."
+                "text": "If you use a hosted checkout from Razorpay, Stripe, PayPal, or similar (customer redirects to their payment page), you qualify for PCI DSS SAQ A — the simplest compliance path requiring just a short annual self-assessment. If you embed payment fields in your own page using their JS SDK, you're on SAQ A-EP. Full SAQ D compliance is only required if you store raw card data on your servers, which modern integrations should never do."
               }
             }
           ]
         },
         {
           "@type": "ItemList",
-          "name": "Top Fintech Payment Solutions and Gateways",
-          "description": "Comprehensive comparison of fintech payment gateways and solutions for ecommerce businesses in India and globally",
+          "name": "Top Payment Gateways and Fintech Payment Solutions",
+          "description": "Comprehensive comparison of payment gateways and fintech payment solutions for ecommerce businesses in India and globally",
+          "numberOfItems": 10,
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Razorpay", "description": "India's leading fintech payment gateway with UPI, subscriptions, and payouts" },
-            { "@type": "ListItem", "position": 2, "name": "Cashfree Payments", "description": "Fast-settlement Indian fintech payment gateway" },
-            { "@type": "ListItem", "position": 3, "name": "Stripe", "description": "Global developer-first fintech payment infrastructure" },
-            { "@type": "ListItem", "position": 4, "name": "PayPal", "description": "Global digital wallet and payment platform" },
-            { "@type": "ListItem", "position": 5, "name": "Adyen", "description": "Enterprise global fintech payment platform" },
-            { "@type": "ListItem", "position": 6, "name": "Paddle", "description": "SaaS-focused merchant of record and fintech solution" },
-            { "@type": "ListItem", "position": 7, "name": "Lemon Squeezy", "description": "Creator-friendly merchant of record" },
-            { "@type": "ListItem", "position": 8, "name": "Shopify Payments", "description": "Native payment solution for Shopify ecommerce stores" },
-            { "@type": "ListItem", "position": 9, "name": "PhonePe for Business", "description": "UPI-based payment solution for Indian merchants" },
-            { "@type": "ListItem", "position": 10, "name": "Paytm Payment Gateway", "description": "Indian digital wallet and fintech payment solution" }
+            { "@type": "ListItem", "position": 1, "name": "Razorpay", "description": "India's leading payment gateway with UPI, subscriptions, and payouts", "url": "https://blog.parivestra.com/topics/payment-gateway" },
+            { "@type": "ListItem", "position": 2, "name": "Cashfree Payments", "description": "Fast-settlement Indian payment gateway", "url": "https://blog.parivestra.com/topics/payment-gateway" },
+            { "@type": "ListItem", "position": 3, "name": "Stripe", "description": "Global developer-first payment infrastructure", "url": "https://blog.parivestra.com/topics/payment-api" },
+            { "@type": "ListItem", "position": 4, "name": "PayPal", "description": "Global digital wallet and payment platform", "url": "https://blog.parivestra.com/topics/ecommerce-payments" },
+            { "@type": "ListItem", "position": 5, "name": "Adyen", "description": "Enterprise global payment platform", "url": "https://blog.parivestra.com/topics/payment-processing" },
+            { "@type": "ListItem", "position": 6, "name": "Paddle", "description": "SaaS-focused merchant of record", "url": "https://blog.parivestra.com/topics/payment-integration" },
+            { "@type": "ListItem", "position": 7, "name": "Lemon Squeezy", "description": "Creator-friendly merchant of record", "url": "https://blog.parivestra.com/topics/payment-integration" },
+            { "@type": "ListItem", "position": 8, "name": "Shopify Payments", "description": "Native payment solution for Shopify stores", "url": "https://blog.parivestra.com/topics/ecommerce-payments" },
+            { "@type": "ListItem", "position": 9, "name": "PhonePe for Business", "description": "UPI-based payment solution for Indian merchants", "url": "https://blog.parivestra.com/topics/payment-gateway" },
+            { "@type": "ListItem", "position": 10, "name": "Chargebee", "description": "Subscription billing and revenue management platform", "url": "https://blog.parivestra.com/topics/fintech" }
           ]
         },
         {
           "@type": "EducationalOrganization",
+          "@id": "https://blog.parivestra.com/#educational",
           "name": "Parivestra Payments Intelligence Hub",
-          "url": "https://payments.parivestra.com",
-          "description": "Free educational resource on fintech, ecommerce payments, payment gateways, digital payment infrastructure, UPI, BNPL, and payment technology.",
+          "url": "https://blog.parivestra.com",
+          "description": "Free educational resource covering payment gateways, payment processing, fintech payment solutions, UPI infrastructure, ecommerce payments, payment APIs, subscription billing, and cross-border payments.",
           "teaches": [
-            "Fintech Payment Solutions",
-            "Payment Gateway Comparison",
-            "UPI Infrastructure",
+            "Payment Gateway Selection and Comparison",
+            "Payment Processing Fundamentals",
+            "Payment Integration (Stripe, Razorpay, Cashfree)",
+            "UPI Payment Infrastructure",
             "Ecommerce Checkout Optimization",
-            "Subscription Billing",
-            "Cross-Border Payments",
-            "Payment Compliance (PCI DSS)",
-            "BNPL for Ecommerce",
-            "Digital Wallets",
-            "Payment Orchestration"
+            "Subscription Billing Platforms",
+            "Cross-Border Payment Solutions",
+            "Merchant Services and Merchant of Record",
+            "Payment API Development",
+            "Fintech Payment Compliance (PCI DSS)"
           ]
         }
       ]
     }
     </script>
 
-    <!-- Fonts -->
+    <!-- Fonts with performance hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
     <style>body { font-family: 'Inter', system-ui, sans-serif; }</style>
   </head>
   <body>

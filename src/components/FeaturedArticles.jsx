@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const articles = [
   {
     tag: 'Head to Head',
@@ -7,6 +9,7 @@ const articles = [
     readTime: '11 min',
     category: 'India Payments',
     accent: 'border-l-indigo-400',
+    href: '/blog/razorpay-vs-cashfree-vs-payu',
   },
   {
     tag: 'Decision Guide',
@@ -16,6 +19,7 @@ const articles = [
     readTime: '8 min',
     category: 'SaaS Billing',
     accent: 'border-l-violet-400',
+    href: '/blog/paddle-vs-stripe-saas',
   },
   {
     tag: 'Conversion Fix',
@@ -25,6 +29,7 @@ const articles = [
     readTime: '13 min',
     category: 'Subscription Billing',
     accent: 'border-l-cyan-400',
+    href: '/blog/involuntary-churn-subscription',
   },
   {
     tag: 'Global Expansion',
@@ -34,15 +39,17 @@ const articles = [
     readTime: '15 min',
     category: 'Cross-Border Payments',
     accent: 'border-l-emerald-400',
+    href: '/blog/cross-border-payments-india',
   },
   {
     tag: 'Developer Guide',
     tagColor: 'bg-blue-100 text-blue-700',
-    title: 'Stripe Payment Intents vs Charges API — What Changed and What It Means for You',
-    desc: 'If you built on the older Charges API, here\'s what\'s different, why Stripe made the switch, and how SCA compliance fits into it.',
-    readTime: '10 min',
-    category: 'Stripe Integration',
+    title: 'Stripe vs Razorpay: A Real Comparison for Indian Ecommerce Brands',
+    desc: 'Side-by-side on pricing, UPI support, developer experience, settlement times, and which one actually fits Indian customers.',
+    readTime: '12 min',
+    category: 'Stripe vs Razorpay',
     accent: 'border-l-blue-400',
+    href: '/blog/stripe-vs-razorpay',
   },
   {
     tag: 'Quick Guide',
@@ -52,6 +59,7 @@ const articles = [
     readTime: '9 min',
     category: 'Payment Compliance',
     accent: 'border-l-orange-400',
+    href: '/blog/pci-dss-ecommerce',
   },
 ]
 
@@ -73,19 +81,20 @@ export default function FeaturedArticles() {
               Real questions, real answers — written by people who've been through these payment decisions.
             </p>
           </div>
-          <a href="#research" className="shrink-0 text-sm font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1.5">
+          <Link to="/blog" className="shrink-0 text-sm font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1.5">
             View all articles
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map(art => (
-            <article
+            <Link
               key={art.title}
-              className={`group bg-white border border-gray-100 border-l-4 ${art.accent} rounded-2xl rounded-l-xl p-6 card-hover cursor-pointer flex flex-col`}
+              to={art.href}
+              className={`group bg-white border border-gray-100 border-l-4 ${art.accent} rounded-2xl rounded-l-xl p-6 card-hover flex flex-col`}
             >
               <div className="flex items-center justify-between mb-4">
                 <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-full ${art.tagColor}`}>
@@ -111,7 +120,7 @@ export default function FeaturedArticles() {
                   </svg>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

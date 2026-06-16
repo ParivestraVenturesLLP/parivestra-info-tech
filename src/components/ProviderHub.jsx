@@ -116,7 +116,7 @@ export default function ProviderHub() {
             <div key={p.name} className="bg-white border border-gray-100 rounded-2xl p-5 card-hover flex flex-col">
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
-                <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center text-white text-xs font-bold`}>
+                <div className={`w-11 h-11 rounded-xl bg-linear-to-br ${p.color} flex items-center justify-center text-white text-xs font-bold`}>
                   {p.abbr}
                 </div>
                 <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${p.badgeColor}`}>

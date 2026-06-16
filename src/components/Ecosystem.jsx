@@ -126,7 +126,7 @@ export default function Ecosystem() {
                 key={cat.title}
                 className="group bg-white border border-gray-100 rounded-2xl p-6 card-hover cursor-pointer relative overflow-hidden"
               >
-                <div className={`absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-current to-transparent ${c.text} opacity-0 group-hover:opacity-30 transition-opacity duration-300`} />
+                <div className={`absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-transparent via-current to-transparent ${c.text} opacity-0 group-hover:opacity-30 transition-opacity duration-300`} />
 
                 <div className={`w-11 h-11 ${c.bg} ${c.border} border rounded-xl flex items-center justify-center text-xl mb-4`}>
                   {cat.icon}
