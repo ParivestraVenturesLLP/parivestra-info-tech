@@ -83,9 +83,9 @@ export default function SEOHead({
       <link rel="canonical" href={fullCanonical} />
 
       {/* Hreflang */}
-      <link rel="alternate" hreflang="en" href={fullCanonical} />
-      <link rel="alternate" hreflang="en-IN" href={fullCanonical} />
-      <link rel="alternate" hreflang="x-default" href={fullCanonical} />
+      <link rel="alternate" hrefLang="en" href={fullCanonical} />
+      <link rel="alternate" hrefLang="en-IN" href={fullCanonical} />
+      <link rel="alternate" hrefLang="x-default" href={fullCanonical} />
 
       {/* Open Graph */}
       <meta property="og:type" content={ogType} />
