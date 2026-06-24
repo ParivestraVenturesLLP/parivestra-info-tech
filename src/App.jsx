@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { useEffect } from 'react'
 import './index.css'
+import { usePageTracking } from './hooks/usePageTracking'
 
 // Main pages
 import Home from './pages/Home'
@@ -39,6 +40,8 @@ function Wrap({ children }) {
 }
 
 export default function App() {
+  usePageTracking()
+
   return (
     <div className="min-h-screen bg-white font-sans antialiased">
       <Routes>
