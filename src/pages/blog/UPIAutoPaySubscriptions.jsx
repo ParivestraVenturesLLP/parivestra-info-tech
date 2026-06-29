@@ -65,6 +65,7 @@ export default function UPIAutoPaySubscriptions() {
           ],
         },
       }}
+      faqs={faqs}
     >
       <h1 className="text-3xl lg:text-[36px] font-bold text-gray-900 tracking-tight leading-tight mb-6" itemProp="headline">
         UPI AutoPay for Subscriptions: Complete Setup Guide for Indian SaaS & D2C

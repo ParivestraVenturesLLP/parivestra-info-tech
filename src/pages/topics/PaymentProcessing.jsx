@@ -33,7 +33,7 @@ const faqs = [
 export default function PaymentProcessingTopic() {
   const breadcrumbs = [
     { name: 'Home', path: '/' },
-    { name: 'Topics', path: '/#ecosystem' },
+    { name: 'Blog', path: '/blog' },
     { name: 'Payment Processing', path: '/topics/payment-processing' },
   ]
 
@@ -54,12 +54,13 @@ export default function PaymentProcessingTopic() {
           about: { '@type': 'Thing', name: 'Payment Processor', sameAs: 'https://en.wikipedia.org/wiki/Payment_processor' },
           publisher: { '@id': 'https://parivestra.com/#organization' },
         }}
+        faqs={faqs}
       />
 
       <Navbar />
 
-      <main className="pt-20">
-        <nav aria-label="Breadcrumb" className="bg-gray-50 border-b border-gray-100">
+      <main className="topic-page pt-20 min-h-screen">
+        <nav aria-label="Breadcrumb" className="breadcrumb-bar border-b border-white/8 bg-gray-900/50 backdrop-blur-sm">
           <div className="max-w-5xl mx-auto px-6 lg:px-8 py-3">
             <ol className="flex items-center gap-2 text-xs text-gray-500">
               <li><Link to="/" className="hover:text-indigo-600 transition-colors">Home</Link></li>

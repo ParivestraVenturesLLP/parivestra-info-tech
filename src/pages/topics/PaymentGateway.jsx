@@ -46,7 +46,7 @@ const providers = [
 export default function PaymentGatewayTopic() {
   const breadcrumbs = [
     { name: 'Home', path: '/' },
-    { name: 'Topics', path: '/#ecosystem' },
+    { name: 'Blog', path: '/blog' },
     { name: 'Payment Gateway', path: '/topics/payment-gateway' },
   ]
 
@@ -75,13 +75,14 @@ export default function PaymentGatewayTopic() {
         keywords="payment gateway, best payment gateway India, payment gateway comparison, Razorpay, Cashfree, Stripe India, payment gateway integration, payment gateway fees, online payment gateway, ecommerce payment gateway"
         breadcrumbs={breadcrumbs}
         schema={schema}
+        faqs={faqs}
       />
 
       <Navbar />
 
-      <main className="pt-20">
+      <main className="topic-page pt-20 min-h-screen">
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="bg-gray-50 border-b border-gray-100">
+        <nav aria-label="Breadcrumb" className="breadcrumb-bar border-b border-white/8 bg-gray-900/50 backdrop-blur-sm">
           <div className="max-w-5xl mx-auto px-6 lg:px-8 py-3">
             <ol className="flex items-center gap-2 text-xs text-gray-500">
               <li><Link to="/" className="hover:text-indigo-600 transition-colors">Home</Link></li>

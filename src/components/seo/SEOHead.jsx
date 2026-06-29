@@ -13,6 +13,7 @@ export default function SEOHead({
   article = null,
   breadcrumbs = [],
   schema = null,
+  faqs = null,
   keywords = '',
   noindex = false,
 }) {
@@ -135,6 +136,21 @@ export default function SEOHead({
       {schema && (
         <script type="application/ld+json">
           {JSON.stringify(schema)}
+        </script>
+      )}
+
+      {/* JSON-LD: FAQ rich results */}
+      {faqs && faqs.length > 0 && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs.map(f => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          })}
         </script>
       )}
     </Helmet>

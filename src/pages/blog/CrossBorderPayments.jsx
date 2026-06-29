@@ -65,6 +65,7 @@ export default function CrossBorderPayments() {
           ],
         },
       }}
+      faqs={faqs}
     >
       <h1 className="text-3xl lg:text-[36px] font-bold text-gray-900 tracking-tight leading-tight mb-6" itemProp="headline">
         Cross-Border Payments for Indian Businesses: A Complete 2025 Guide

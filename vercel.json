@@ -1,6 +1,11 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/((?!assets|favicon\\.svg|icons\\.svg|sitemap\\.xml|robots\\.txt|og-default\\.png|_redirects).*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {

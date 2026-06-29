@@ -8,9 +8,10 @@ export function usePageTracking() {
 
   useEffect(() => {
     if (typeof window.gtag !== 'function') return
-    window.gtag('config', GA_ID, {
-      page_path:  location.pathname + location.search,
-      page_title: document.title,
+    window.gtag('event', 'page_view', {
+      page_path:     location.pathname + location.search,
+      page_location: window.location.href,
+      send_to:       GA_ID,
     })
   }, [location.pathname, location.search])
 }

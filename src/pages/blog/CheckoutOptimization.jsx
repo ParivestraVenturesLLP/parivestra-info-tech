@@ -117,6 +117,7 @@ export default function CheckoutOptimizationArticle() {
           ],
         },
       }}
+      faqs={faqs}
     >
       <h1 className="text-3xl lg:text-[36px] font-bold text-gray-900 tracking-tight leading-tight mb-6" itemProp="headline">
         7 Checkout Changes That Actually Move Conversion Rates

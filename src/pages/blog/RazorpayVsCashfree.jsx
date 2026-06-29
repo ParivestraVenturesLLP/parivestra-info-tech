@@ -66,6 +66,7 @@ export default function RazorpayVsCashfree() {
           ],
         },
       }}
+      faqs={faqs}
     >
       <h1 className="text-3xl lg:text-[36px] font-bold text-gray-900 tracking-tight leading-tight mb-6" itemProp="headline">
         Razorpay vs Cashfree vs PayU: Which Indian Payment Gateway is Actually Better?

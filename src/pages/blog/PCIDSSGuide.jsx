@@ -65,6 +65,7 @@ export default function PCIDSSGuide() {
           ],
         },
       }}
+      faqs={faqs}
     >
       <h1 className="text-3xl lg:text-[36px] font-bold text-gray-900 tracking-tight leading-tight mb-6" itemProp="headline">
         PCI Compliance for Ecommerce Store Owners: What You Actually Have to Do

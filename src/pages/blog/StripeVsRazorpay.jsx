@@ -66,6 +66,7 @@ export default function StripeVsRazorpay() {
           ],
         },
       }}
+      faqs={faqs}
     >
       <h1 className="text-3xl lg:text-[36px] font-bold text-gray-900 tracking-tight leading-tight mb-6" itemProp="headline">
         Stripe vs Razorpay: A Real Comparison for Indian Ecommerce Brands (2026)
