@@ -7,11 +7,9 @@ import { Skeleton } from "../components/ui/Skeleton";
 import { EmptyState } from "../components/ui/EmptyState";
 import { ArticleCard } from "../components/content/ArticleCard";
 import { HeroSlider } from "../components/content/HeroSlider";
-import { HomeImageSlider } from "../components/content/HomeImageSlider";
 import { useFirestoreQuery } from "../hooks/useFirestoreQuery";
 import { getPublishedArticles } from "../lib/firestore/articles";
 import { getPublishedTopics } from "../lib/firestore/topics";
-import { getPublishedHeroSlides } from "../lib/firestore/heroSlides";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -31,10 +29,6 @@ export default function Home() {
     () => getPublishedTopics(),
     []
   );
-  const { data: heroSlides, loading: loadingSlides } = useFirestoreQuery(
-    () => getPublishedHeroSlides(3),
-    []
-  );
 
   const featuredSlugs = new Set((featured || []).map((a) => a.slug));
   const restArticles = (latest || []).filter((a) => !featuredSlugs.has(a.slug)).slice(0, 6);
@@ -45,38 +39,53 @@ export default function Home() {
 
       {/* Hero */}
       <section className="border-b border-border">
-        <Container className="grid gap-10 py-20 sm:py-28 lg:grid-cols-[1.3fr_1fr] lg:items-end">
-          <motion.div initial="hidden" animate="show" variants={fadeUp} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
-            <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">
-              Ideas, Research &amp; Stories
-            </p>
-            <h1 className="mt-5 max-w-2xl font-serif text-5xl leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl">
-              Clarity on the things that matter.
-            </h1>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-muted">
-              Research, data, and analysis across a range of topics —
-              written to inform, and worth coming back to.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button to="/blog" variant="primary" size="lg">
-                Read the latest
-              </Button>
-              <Button to="/statistics" variant="outline" size="lg">
-                Browse statistics
-              </Button>
-            </div>
-          </motion.div>
+        <Container className="flex flex-col items-center py-20 text-center sm:py-28">
+          <motion.p
+            initial="hidden"
+            animate="show"
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="font-mono text-xs tracking-[0.2em] text-accent uppercase"
+          >
+            Ideas, Research &amp; Stories
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: [16, 0, 0, -8, 0] }}
+            transition={{
+              opacity: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+              y: { duration: 5, ease: "easeInOut", repeat: Infinity, repeatDelay: 1 },
+            }}
+            className="mt-5 max-w-3xl font-serif text-5xl leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl"
+          >
+            Clarity on the things that matter.
+          </motion.h1>
+
+          <motion.p
+            initial="hidden"
+            animate="show"
+            variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-6 max-w-lg text-lg leading-relaxed text-ink-muted"
+          >
+            Research, data, and analysis across a range of topics —
+            written to inform, and worth coming back to.
+          </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            initial="hidden"
+            animate="show"
+            variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-8 flex flex-wrap justify-center gap-3"
           >
-            {loadingSlides ? (
-              <Skeleton className="aspect-4/3 w-full rounded-2xl" />
-            ) : heroSlides?.length ? (
-              <HomeImageSlider slides={heroSlides} />
-            ) : null}
+            <Button to="/blog" variant="primary" size="lg">
+              Read the latest
+            </Button>
+            <Button to="/statistics" variant="outline" size="lg">
+              Browse statistics
+            </Button>
           </motion.div>
         </Container>
       </section>
