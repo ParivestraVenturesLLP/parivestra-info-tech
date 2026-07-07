@@ -1,98 +1,174 @@
-import SEOHead from '../components/seo/SEOHead'
-import Navbar from '../components/Navbar'
-import Hero from '../components/Hero'
-import Ecosystem from '../components/Ecosystem'
-import ProviderHub from '../components/ProviderHub'
-import FeaturedArticles from '../components/FeaturedArticles'
-import FAQ from '../components/FAQ'
-import FinalCTA from '../components/FinalCTA'
-import Footer from '../components/Footer'
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { SEOHead } from "../components/seo/SEOHead";
+import { Container } from "../components/layout/Container";
+import { Button } from "../components/ui/Button";
+import { Skeleton } from "../components/ui/Skeleton";
+import { EmptyState } from "../components/ui/EmptyState";
+import { ArticleCard } from "../components/content/ArticleCard";
+import { HeroSlider } from "../components/content/HeroSlider";
+import { HomeImageSlider } from "../components/content/HomeImageSlider";
+import { useFirestoreQuery } from "../hooks/useFirestoreQuery";
+import { getPublishedArticles } from "../lib/firestore/articles";
+import { getPublishedTopics } from "../lib/firestore/topics";
+import { getPublishedHeroSlides } from "../lib/firestore/heroSlides";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0 },
+};
 
 export default function Home() {
+  const { data: featured, loading: loadingFeatured } = useFirestoreQuery(
+    () => getPublishedArticles({ featured: true, max: 6 }),
+    []
+  );
+  const { data: latest, loading: loadingLatest } = useFirestoreQuery(
+    () => getPublishedArticles({ type: "blog", max: 6 }),
+    []
+  );
+  const { data: topics, loading: loadingTopics } = useFirestoreQuery(
+    () => getPublishedTopics(),
+    []
+  );
+  const { data: heroSlides, loading: loadingSlides } = useFirestoreQuery(
+    () => getPublishedHeroSlides(3),
+    []
+  );
+
+  const featuredSlugs = new Set((featured || []).map((a) => a.slug));
+  const restArticles = (latest || []).filter((a) => !featuredSlugs.has(a.slug)).slice(0, 6);
+
   return (
     <>
-      <SEOHead
-        title="Payment Gateway Comparison & Fintech Guides"
-        description="Compare payment gateways, UPI solutions, and fintech platforms for India and global ecommerce. In-depth guides on Stripe, Razorpay, Cashfree, Adyen, PayPal, checkout optimization, subscription billing, and cross-border payments. Free, unbiased research by Parivestra."
-        canonical="/"
-        keywords="payment gateway India, best payment gateway ecommerce, Stripe vs Razorpay, Razorpay vs Cashfree, UPI payment gateway, payment processing India, payment integration guide, fintech payment solutions, checkout optimization, subscription billing platform, cross-border payments India, PCI DSS compliance, merchant of record, payment APIs, ecommerce payments 2026"
-        breadcrumbs={[{ name: 'Home', path: '/' }]}
-        schema={{
-          '@context': 'https://schema.org',
-          '@graph': [
-            {
-              '@type': 'WebSite',
-              '@id': 'https://blog.parivestra.com/#website',
-              url: 'https://blog.parivestra.com/',
-              name: 'Parivestra — Payments & Fintech Intelligence',
-              description: 'Free, unbiased payment gateway comparisons, UPI guides, and fintech research for Indian and global ecommerce businesses.',
-              publisher: { '@id': 'https://parivestra.com/#organization' },
-              inLanguage: 'en-IN',
-              potentialAction: {
-                '@type': 'SearchAction',
-                target: { '@type': 'EntryPoint', urlTemplate: 'https://blog.parivestra.com/?s={search_term_string}' },
-                'query-input': 'required name=search_term_string',
-              },
-            },
-            {
-              '@type': 'WebPage',
-              '@id': 'https://blog.parivestra.com/#webpage',
-              url: 'https://blog.parivestra.com/',
-              name: 'Payment Gateway Comparison & Fintech Guides — Parivestra',
-              isPartOf: { '@id': 'https://blog.parivestra.com/#website' },
-              description: 'Compare payment gateways (Stripe, Razorpay, Cashfree, Adyen, PayPal), understand UPI infrastructure, checkout optimization, subscription billing, cross-border payments, and payment API reviews.',
-              inLanguage: 'en-IN',
-              datePublished: '2025-01-01',
-              dateModified: '2026-06-29',
-              speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.speakable'] },
-              breadcrumb: {
-                '@type': 'BreadcrumbList',
-                itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blog.parivestra.com/' }],
-              },
-            },
-            {
-              '@type': 'FAQPage',
-              mainEntity: [
-                {
-                  '@type': 'Question',
-                  name: 'What is the best payment gateway for ecommerce in India?',
-                  acceptedAnswer: { '@type': 'Answer', text: 'For Indian ecommerce, Razorpay and Cashfree are the top choices. Razorpay has broader product depth — UPI, net banking, RuPay, UPI AutoPay for subscriptions, payment links, and payouts. Cashfree is known for faster, often same-day settlements. For international customers, add Stripe alongside your Indian gateway.' },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'Stripe vs Razorpay — which should I choose for India?',
-                  acceptedAnswer: { '@type': 'Answer', text: 'If your customers are mostly in India, choose Razorpay — it supports UPI, net banking, RuPay, and UPI AutoPay which Stripe does not support in India. For international sales or global SaaS, Stripe is stronger. Many Indian businesses use both: Razorpay for domestic, Stripe for international transactions.' },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'How do payment gateway fees work?',
-                  acceptedAnswer: { '@type': 'Answer', text: 'Transaction fee is the headline number (Razorpay ~2%, Stripe 2.9% + 30¢) but also check: FX fees (1–1.5% on international cards), chargeback fees (₹500–₹1000 per dispute), refund fees, monthly platform fees, and settlement charges. Add all at your actual transaction mix before comparing.' },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'What payment methods should Indian ecommerce stores support?',
-                  acceptedAnswer: { '@type': 'Answer', text: 'UPI is non-negotiable for India — it accounts for over 50% of digital payments. Beyond UPI: debit and credit cards (RuPay, Visa, Mastercard), net banking, and wallets (Paytm, PhonePe). For subscriptions, UPI AutoPay is critical. BNPL options like Simpl and LazyPay increase conversions for higher-value purchases.' },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'What PCI DSS compliance level does my ecommerce store need?',
-                  acceptedAnswer: { '@type': 'Answer', text: 'If you use a hosted checkout from Razorpay, Stripe, or PayPal (customer redirects to their page), you qualify for SAQ A — the simplest level, just a short annual self-assessment. Embedding card fields in your own page via JS SDK puts you on SAQ A-EP. Full SAQ D only applies if you store raw card data on your servers.' },
-                },
-              ],
-            },
-          ],
-        }}
-      />
-      <Navbar />
-      <main>
-        <Hero />
-        <Ecosystem />
-        <ProviderHub limit={4} />
-        <FeaturedArticles />
-        <FAQ limit={5} />
-        <FinalCTA />
-      </main>
-      <Footer />
+      <SEOHead path="/" />
+
+      {/* Hero */}
+      <section className="border-b border-border">
+        <Container className="grid gap-10 py-20 sm:py-28 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+          <motion.div initial="hidden" animate="show" variants={fadeUp} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
+            <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">
+              Ideas, Research &amp; Stories
+            </p>
+            <h1 className="mt-5 max-w-2xl font-serif text-5xl leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl">
+              Clarity on the things that matter.
+            </h1>
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-muted">
+              Research, data, and analysis across a range of topics —
+              written to inform, and worth coming back to.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button to="/blog" variant="primary" size="lg">
+                Read the latest
+              </Button>
+              <Button to="/statistics" variant="outline" size="lg">
+                Browse statistics
+              </Button>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {loadingSlides ? (
+              <Skeleton className="aspect-4/3 w-full rounded-2xl" />
+            ) : heroSlides?.length ? (
+              <HomeImageSlider slides={heroSlides} />
+            ) : null}
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* Featured story */}
+      <section className="py-16 sm:py-20">
+        <Container>
+          <div className="mb-8 flex items-baseline justify-between">
+            <h2 className="font-serif text-2xl text-ink">Featured story</h2>
+            <Link to="/blog" className="text-sm font-medium text-accent hover:text-accent-hover">
+              View all &rarr;
+            </Link>
+          </div>
+
+          {loadingFeatured ? (
+            <Skeleton className="h-105 w-full rounded-3xl" />
+          ) : featured?.length ? (
+            <HeroSlider articles={featured} />
+          ) : (
+            <EmptyState
+              title="No featured story yet"
+              description="Publish an article and mark it as featured from the admin panel to showcase it here."
+            />
+          )}
+        </Container>
+      </section>
+
+      {/* Latest articles */}
+      <section className="border-t border-border bg-paper-raised py-16 sm:py-20">
+        <Container>
+          <div className="mb-8 flex items-baseline justify-between">
+            <h2 className="font-serif text-2xl text-ink">Latest insights</h2>
+            <Link to="/blog" className="text-sm font-medium text-accent hover:text-accent-hover">
+              View all &rarr;
+            </Link>
+          </div>
+
+          {loadingLatest ? (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {[...Array(3)].map((_, i) => (
+                <Skeleton key={i} className="h-80 rounded-2xl" />
+              ))}
+            </div>
+          ) : restArticles.length ? (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {restArticles.map((article) => (
+                <ArticleCard key={article.slug} article={article} />
+              ))}
+            </div>
+          ) : (
+            <EmptyState
+              title="No articles published yet"
+              description="Once articles are published from the admin panel, they'll appear here."
+            />
+          )}
+        </Container>
+      </section>
+
+      {/* Topic collections */}
+      <section className="py-16 sm:py-20">
+        <Container>
+          <h2 className="mb-8 font-serif text-2xl text-ink">Explore by topic</h2>
+
+          {loadingTopics ? (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[...Array(3)].map((_, i) => (
+                <Skeleton key={i} className="h-32 rounded-2xl" />
+              ))}
+            </div>
+          ) : topics?.length ? (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {topics.map((topic) => (
+                <Link
+                  key={topic.slug}
+                  to={`/topics/${topic.slug}`}
+                  className="group flex flex-col justify-between rounded-2xl border border-border bg-paper-raised p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-lg hover:shadow-ink/5"
+                >
+                  <h3 className="font-serif text-lg text-ink transition-colors group-hover:text-accent">
+                    {topic.name}
+                  </h3>
+                  <p className="mt-2 line-clamp-2 text-sm text-ink-muted">{topic.description}</p>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <EmptyState
+              title="No topics yet"
+              description="Topic collections created in the admin panel will be listed here."
+            />
+          )}
+        </Container>
+      </section>
     </>
-  )
+  );
 }

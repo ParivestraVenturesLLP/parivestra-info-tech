@@ -1,158 +1,86 @@
-import { Helmet } from 'react-helmet-async'
+import { Helmet } from "react-helmet-async";
+import { BASE_URL, DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, SITE_NAME } from "../../lib/seo";
 
-const BASE_URL = 'https://blog.parivestra.com'
-const DEFAULT_IMAGE = `${BASE_URL}/og-default.png`
-const SITE_NAME = 'Parivestra Blog — Payments & Fintech Intelligence'
-
-export default function SEOHead({
+export function SEOHead({
   title,
-  description,
-  canonical,
-  ogType = 'website',
-  ogImage = DEFAULT_IMAGE,
-  article = null,
-  breadcrumbs = [],
-  schema = null,
-  faqs = null,
-  keywords = '',
+  description = DEFAULT_DESCRIPTION,
+  path = "/",
+  ogImage = DEFAULT_OG_IMAGE,
+  ogType = "website",
   noindex = false,
+  publishedAt,
+  updatedAt,
+  breadcrumbs,
+  faqs,
 }) {
-  const fullTitle = title
-    ? `${title} | Parivestra Blog`
-    : 'Payment Gateway Comparison & Fintech Guides — Parivestra Blog'
+  const fullTitle = title ? `${title} — ${SITE_NAME}` : `${SITE_NAME} — Ideas, Research & Stories Worth Reading`;
+  const canonical = `${BASE_URL}${path}`;
 
-  const fullCanonical = canonical
-    ? `${BASE_URL}${canonical}`
-    : `${BASE_URL}/`
+  const schemas = [];
 
-  const defaultKeywords = 'payment gateway, payment processing, payment integration, payment solutions, fintech, merchant services, ecommerce payments, payment APIs, UPI payments, subscription billing, cross-border payments, checkout optimization'
+  if (breadcrumbs?.length) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumbs.map((crumb, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: crumb.label,
+        item: `${BASE_URL}${crumb.path}`,
+      })),
+    });
+  }
 
-  const breadcrumbSchema = breadcrumbs.length > 0
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement: breadcrumbs.map((crumb, i) => ({
-          '@type': 'ListItem',
-          position: i + 1,
-          name: crumb.name,
-          item: `${BASE_URL}${crumb.path}`,
-        })),
-      }
-    : null
+  if (ogType === "article") {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: title,
+      description,
+      image: ogImage,
+      datePublished: publishedAt,
+      dateModified: updatedAt || publishedAt,
+      publisher: { "@type": "Organization", name: SITE_NAME },
+      mainEntityOfPage: canonical,
+    });
+  }
 
-  const articleSchema = article
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'Article',
-        headline: article.title || title,
-        description: article.description || description,
-        author: {
-          '@type': 'Organization',
-          name: 'Parivestra',
-          url: 'https://parivestra.com',
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'Parivestra',
-          logo: {
-            '@type': 'ImageObject',
-            url: `${BASE_URL}/favicon.svg`,
-          },
-        },
-        datePublished: article.datePublished || '2026-01-01',
-        dateModified: article.dateModified || '2026-06-16',
-        mainEntityOfPage: { '@type': 'WebPage', '@id': fullCanonical },
-        image: ogImage,
-        keywords: keywords || defaultKeywords,
-        articleSection: article.section || 'Fintech & Payments',
-        inLanguage: 'en-IN',
-        isPartOf: {
-          '@type': 'Blog',
-          '@id': `${BASE_URL}/#blog`,
-        },
-      }
-    : null
+  if (faqs?.length) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+    });
+  }
 
   return (
     <Helmet>
-      <html lang="en-IN" />
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords || defaultKeywords} />
-      <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'} />
-      <meta name="author" content="Parivestra" />
-      <link rel="canonical" href={fullCanonical} />
+      <link rel="canonical" href={canonical} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
 
-      {/* Hreflang */}
-      <link rel="alternate" hrefLang="en" href={fullCanonical} />
-      <link rel="alternate" hrefLang="en-IN" href={fullCanonical} />
-      <link rel="alternate" hrefLang="x-default" href={fullCanonical} />
-
-      {/* Open Graph */}
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={fullCanonical} />
+      <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:locale" content="en_IN" />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={fullTitle} />
+      <meta property="og:url" content={canonical} />
 
-      {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@parivestra" />
-      <meta name="twitter:creator" content="@parivestra" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
-      <meta name="twitter:image:alt" content={fullTitle} />
 
-      {/* Article-specific OG tags */}
-      {article && <meta property="article:published_time" content={article.datePublished || '2026-01-01'} />}
-      {article && <meta property="article:modified_time" content={article.dateModified || '2026-06-16'} />}
-      {article && <meta property="article:author" content="https://parivestra.com" />}
-      {article && <meta property="article:section" content={article.section || 'Fintech & Payments'} />}
-
-      {/* Speakable */}
-      <meta name="speakable-selector" content="h1, h2, .speakable, .ai-answer, .key-takeaway" />
-
-      {/* JSON-LD: Breadcrumbs */}
-      {breadcrumbSchema && (
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbSchema)}
-        </script>
-      )}
-
-      {/* JSON-LD: Article */}
-      {articleSchema && (
-        <script type="application/ld+json">
-          {JSON.stringify(articleSchema)}
-        </script>
-      )}
-
-      {/* JSON-LD: Custom schema */}
-      {schema && (
-        <script type="application/ld+json">
+      {schemas.map((schema, i) => (
+        <script key={i} type="application/ld+json">
           {JSON.stringify(schema)}
         </script>
-      )}
-
-      {/* JSON-LD: FAQ rich results */}
-      {faqs && faqs.length > 0 && (
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: faqs.map(f => ({
-              '@type': 'Question',
-              name: f.q,
-              acceptedAnswer: { '@type': 'Answer', text: f.a },
-            })),
-          })}
-        </script>
-      )}
+      ))}
     </Helmet>
-  )
+  );
 }

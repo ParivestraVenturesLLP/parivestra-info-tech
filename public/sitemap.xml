@@ -1,149 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-
-  <!-- ===== HOME ===== -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://blog.parivestra.com/</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en"      href="https://blog.parivestra.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-IN"   href="https://blog.parivestra.com/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://blog.parivestra.com/"/>
   </url>
-
-  <!-- ===== BLOG INDEX ===== -->
   <url>
     <loc>https://blog.parivestra.com/blog</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
   </url>
-
-  <!-- ===== BLOG ARTICLES ===== -->
-  <url>
-    <loc>https://blog.parivestra.com/blog/razorpay-vs-cashfree-vs-payu</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.92</priority>
-  </url>
-
-  <url>
-    <loc>https://blog.parivestra.com/blog/stripe-vs-razorpay</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.92</priority>
-  </url>
-
-  <url>
-    <loc>https://blog.parivestra.com/blog/paddle-vs-stripe-saas</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.88</priority>
-  </url>
-
-  <url>
-    <loc>https://blog.parivestra.com/blog/checkout-optimization</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.88</priority>
-  </url>
-
-  <url>
-    <loc>https://blog.parivestra.com/blog/involuntary-churn-subscription</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://blog.parivestra.com/blog/pci-dss-ecommerce</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://blog.parivestra.com/blog/upi-autopay-subscriptions</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://blog.parivestra.com/blog/cross-border-payments-india</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- ===== TOPIC HUBS (high priority pillar pages) ===== -->
-  <url>
-    <loc>https://blog.parivestra.com/topics/payment-gateway</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.93</priority>
-    <xhtml:link rel="alternate" hreflang="en"    href="https://blog.parivestra.com/topics/payment-gateway"/>
-    <xhtml:link rel="alternate" hreflang="en-IN" href="https://blog.parivestra.com/topics/payment-gateway"/>
-  </url>
-
-  <url>
-    <loc>https://blog.parivestra.com/topics/fintech</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://blog.parivestra.com/topics/payment-processing</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://blog.parivestra.com/topics/payment-api</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://blog.parivestra.com/topics/ecommerce-payments</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://blog.parivestra.com/topics/payment-integration</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <!-- ===== AUTHORITY & DATA PAGES ===== -->
   <url>
     <loc>https://blog.parivestra.com/research</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
   </url>
-
   <url>
     <loc>https://blog.parivestra.com/statistics</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
   </url>
-
   <url>
     <loc>https://blog.parivestra.com/reports</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
   </url>
-
 </urlset>

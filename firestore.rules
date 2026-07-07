@@ -1,0 +1,65 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function noAdminsYet() {
+      return !exists(/databases/$(database)/documents/meta/adminFlag) ||
+        get(/databases/$(database)/documents/meta/adminFlag).data.exists == false;
+    }
+
+    // ---- bootstrap guard ----
+    match /meta/adminFlag {
+      allow get: if true;
+      allow create, update: if request.auth != null
+        && request.resource.data.exists == true
+        && noAdminsYet();
+      allow delete: if false;
+    }
+
+    match /admins/{uid} {
+      allow get: if request.auth != null && request.auth.uid == uid;
+      allow list: if false;
+      allow create: if request.auth != null
+        && request.auth.uid == uid
+        && noAdminsYet();
+      allow update, delete: if false;
+    }
+
+    // ---- authors: always public read, admin write ----
+    match /authors/{slug} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // ---- draftable content: public read of published docs, admin sees/writes everything ----
+    match /articles/{slug} {
+      allow get, list: if resource.data.status == 'published' || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /topics/{slug} {
+      allow get, list: if resource.data.status == 'published' || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /stats/{statId} {
+      allow get, list: if resource.data.status == 'published' || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /reports/{slug} {
+      allow get, list: if resource.data.status == 'published' || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /heroSlides/{slug} {
+      allow get, list: if resource.data.status == 'published' || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+  }
+}

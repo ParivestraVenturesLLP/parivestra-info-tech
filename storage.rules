@@ -1,0 +1,32 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    match /{allPaths=**} {
+      allow read: if true;
+    }
+
+    function isAdmin() {
+      return request.auth != null &&
+        firestore.exists(/databases/(default)/documents/admins/$(request.auth.uid));
+    }
+
+    match /covers/{collectionName}/{slug}/{fileName} {
+      allow write: if isAdmin()
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+
+    match /avatars/authors/{slug}/{fileName} {
+      allow write: if isAdmin()
+        && request.resource.size < 2 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+
+    match /reports/files/{slug}/{fileName} {
+      allow write: if isAdmin()
+        && request.resource.size < 20 * 1024 * 1024
+        && request.resource.contentType.matches('application/pdf');
+    }
+  }
+}

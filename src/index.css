@@ -1,258 +1,103 @@
 @import "tailwindcss";
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* ink / paper / cards */
+  --color-ink: #1c1b18;
+  --color-ink-muted: #5b584f;
+  --color-ink-faint: #8c8878;
+  --color-paper: #faf7ef;
+  --color-paper-raised: #ffffff;
+  --color-border: #e7e2d5;
+
+  /* brand accent — deep emerald, editorial */
+  --color-accent: #0f5c46;
+  --color-accent-hover: #0c4a38;
+  --color-accent-soft: #e4efe9;
+
+  /* secondary — muted warm brass, sparing use */
+  --color-secondary: #b08d4f;
+  --color-secondary-soft: #f3ebdb;
+
+  /* status colors — reserved, never doubled as brand/series colors */
+  --color-status-good: #157f4a;
+  --color-status-warning: #b8860b;
+  --color-status-critical: #c0392b;
+
+  /* typography */
+  --font-serif: "Fraunces Variable", ui-serif, Georgia, serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, "SFMono-Regular", monospace;
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.5s ease-out both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
 
 @layer base {
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    margin: 0;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background: #0a0f1e;
+    text-rendering: optimizeLegibility;
   }
-  #root {
-    width: 100%;
-    max-width: 100%;
-    text-align: left;
-    border: none;
-    min-height: 100svh;
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
   }
 }
 
-@layer utilities {
-  /* ── Gradient text ── */
-  .gradient-text {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 40%, #f97316 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .gradient-text-blue {
-    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 60%, #8b5cf6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* ── Hero background ── */
-  .hero-dark {
-    background:
-      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(99,102,241,0.22) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 80% 5%,  rgba(139,92,246,0.16) 0%, transparent 55%),
-      radial-gradient(ellipse 50% 40% at 50% 90%, rgba(249,115,22,0.10) 0%, transparent 55%),
-      #060b18;
-  }
-  .hero-gradient {
-    background:
-      radial-gradient(ellipse 70% 55% at 50% -5%,  rgba(99,102,241,0.12) 0%, transparent 65%),
-      radial-gradient(ellipse 50% 40% at 85% 15%,  rgba(139,92,246,0.08) 0%, transparent 55%),
-      radial-gradient(ellipse 45% 35% at 10% 60%,  rgba(249,115,22,0.05) 0%, transparent 50%),
-      #f8faff;
-  }
-
-  /* ── Grid / dot overlays ── */
-  .dot-grid {
-    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-  .dot-grid-light {
-    background-image: radial-gradient(circle, rgba(99,102,241,0.12) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-  .line-grid {
-    background-image:
-      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size: 56px 56px;
-  }
-
-  /* ── Gradient borders ── */
-  .gradient-border {
-    position: relative;
-  }
-  .gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(99,102,241,0.5), rgba(139,92,246,0.3), rgba(249,115,22,0.2));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  /* ── Glow effects ── */
-  .glow-indigo {
-    box-shadow: 0 0 40px rgba(99,102,241,0.35), 0 0 80px rgba(99,102,241,0.15);
-  }
-  .glow-orange {
-    box-shadow: 0 0 40px rgba(249,115,22,0.35), 0 0 80px rgba(249,115,22,0.15);
-  }
-  .text-glow {
-    text-shadow: 0 0 60px rgba(99,102,241,0.6);
-  }
-
-  /* ── Card hover ── */
-  .card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-  }
-  .card-hover:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: 0 24px 48px -12px rgba(99,102,241,0.20), 0 0 0 1.5px rgba(99,102,241,0.16);
-  }
-  .card-hover:active {
-    transform: translateY(-2px) scale(0.985);
-    transition: all 0.08s ease;
-  }
-
-  /* ── Shine sweep ── */
-  .shine {
-    position: relative;
-    overflow: hidden;
-  }
-  .shine::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.12) 50%, transparent 60%);
-    transform: translateX(-100%);
-    transition: transform 0.5s ease;
-  }
-  .shine:hover::after {
-    transform: translateX(100%);
-  }
-
-  /* ── Ripple ── */
-  .ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(99,102,241,0.14);
-    transform: scale(0);
-    animation: rippleAnim 0.55s linear;
-    pointer-events: none;
-  }
-
-  /* ── Blog card entrance ── */
-  .blog-card-enter {
-    opacity: 0;
-    transform: translateY(28px);
-    animation: cardEnter 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-
-  /* ── Glow pulse on click ── */
-  .card-clicked {
-    animation: glowPulse 0.4s ease-out;
-  }
-
-  /* ── Floating card animations ── */
-  .float-slow   { animation: floatSlow   7s ease-in-out infinite; }
-  .float-medium { animation: floatMedium 5s ease-in-out infinite; }
-  .float-fast   { animation: floatFast   4s ease-in-out infinite; }
-  .float-reverse{ animation: floatReverse 6s ease-in-out infinite; }
-
-  /* ── Fade in up ── */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(24px);
-    animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-
-  /* ── Ping slow ── */
-  .ping-slow {
-    animation: pingSlow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
-
-  /* ── Number counter ── */
-  .stat-number {
-    font-variant-numeric: tabular-nums;
-  }
+@utility prose-article {
+  --tw-prose-body: var(--color-ink-muted);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-lead: var(--color-ink-muted);
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: var(--color-ink);
+  --tw-prose-counters: var(--color-secondary);
+  --tw-prose-bullets: var(--color-border);
+  --tw-prose-hr: var(--color-border);
+  --tw-prose-quotes: var(--color-ink);
+  --tw-prose-quote-borders: var(--color-accent);
+  --tw-prose-captions: var(--color-ink-faint);
+  --tw-prose-code: var(--color-ink);
+  --tw-prose-pre-code: var(--color-paper);
+  --tw-prose-pre-bg: var(--color-ink);
+  --tw-prose-th-borders: var(--color-border);
+  --tw-prose-td-borders: var(--color-border);
 }
-
-/* ── Topic page dark cascade ──
-   Wrapping a page with .topic-page applies dark-theme text/bg overrides
-   without touching every individual element in the page.
-*/
-.topic-page { background-color: #060b18; }
-
-/* Headings: near-black Tailwind colors → light on dark */
-.topic-page .text-gray-900 { color: #f1f5f9 !important; }
-.topic-page .text-gray-800 { color: #e2e8f0 !important; }
-.topic-page .text-gray-700 { color: #d1d5db !important; }
-.topic-page .text-gray-600 { color: #9ca3af !important; }
-/* gray-500 and below are already readable on dark – leave them alone */
-
-/* Background cards / sections */
-.topic-page .bg-white    { background-color: rgba(17,24,39,0.7) !important; }
-.topic-page .bg-gray-50  { background-color: rgba(17,24,39,0.6) !important; }
-.topic-page .bg-gray-100 { background-color: rgba(30,41,59,0.6) !important; }
-.topic-page section      { background: transparent !important; }
-
-/* Borders */
-.topic-page .border-gray-100 { border-color: rgba(255,255,255,0.08) !important; }
-.topic-page .border-gray-200 { border-color: rgba(255,255,255,0.10) !important; }
-
-/* Indigo accent elements (step circles, definition bars) */
-.topic-page .bg-indigo-100  { background-color: rgba(99,102,241,0.15) !important; }
-.topic-page .text-indigo-700 { color: #a5b4fc !important; }
-.topic-page .text-indigo-600 { color: #818cf8 !important; }
-.topic-page .border-indigo-200 { border-color: rgba(99,102,241,0.25) !important; }
-.topic-page .border-l-4.border-indigo-400 { border-left-color: #6366f1 !important; }
-
-/* Inline links */
-.topic-page a:not([class]) { color: #818cf8; }
-.topic-page a:not([class]):hover { color: #a5b4fc; }
-
-/* ── Keyframes ── */
-@keyframes rippleAnim {
-  to { transform: scale(4); opacity: 0; }
-}
-@keyframes cardEnter {
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes glowPulse {
-  0%   { box-shadow: 0 0 0 0 rgba(99,102,241,0.40); }
-  70%  { box-shadow: 0 0 0 14px rgba(99,102,241,0); }
-  100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
-}
-@keyframes floatSlow {
-  0%, 100% { transform: translateY(0px)   rotate(-2deg); }
-  50%       { transform: translateY(-12px) rotate(-2deg); }
-}
-@keyframes floatMedium {
-  0%, 100% { transform: translateY(0px)  rotate(1.5deg); }
-  50%       { transform: translateY(-9px) rotate(1.5deg); }
-}
-@keyframes floatFast {
-  0%, 100% { transform: translateY(0px)  rotate(-1deg); }
-  50%       { transform: translateY(-8px) rotate(-1deg); }
-}
-@keyframes floatReverse {
-  0%, 100% { transform: translateY(-6px) rotate(2deg); }
-  50%       { transform: translateY(4px)  rotate(2deg); }
-}
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes pingSlow {
-  75%, 100% { transform: scale(2); opacity: 0; }
-}
-@keyframes gradientShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes orb-1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(30px, -20px) scale(1.05); }
-  66%       { transform: translate(-20px, 15px) scale(0.97); }
-}
-@keyframes orb-2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(-25px, 20px) scale(0.95); }
-  66%       { transform: translate(20px, -10px) scale(1.04); }
-}
-.animate-orb-1 { animation: orb-1 12s ease-in-out infinite; }
-.animate-orb-2 { animation: orb-2 15s ease-in-out infinite; }

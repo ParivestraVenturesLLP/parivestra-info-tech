@@ -1,19 +1,21 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { HelmetProvider } from 'react-helmet-async'
-import { BrowserRouter } from 'react-router-dom'
-import { inject } from '@vercel/analytics'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import { Analytics } from "@vercel/analytics/react";
+import "./index.css";
+import App from "./App.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 
-inject()
-
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <App />
+        <AuthProvider>
+          <App />
+          <Analytics />
+        </AuthProvider>
       </BrowserRouter>
     </HelmetProvider>
-  </StrictMode>,
-)
+  </StrictMode>
+);

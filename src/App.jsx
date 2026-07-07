@@ -1,77 +1,49 @@
-import { Routes, Route } from 'react-router-dom'
-import { useEffect } from 'react'
-import './index.css'
-import { usePageTracking } from './hooks/usePageTracking'
+import { Suspense, lazy } from "react";
+import { Route, Routes } from "react-router-dom";
+import { PublicLayout } from "./components/layout/PublicLayout";
+import { Spinner } from "./components/ui/Spinner";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import BlogIndex from "./pages/blog/BlogIndex";
+import ArticlePage from "./pages/blog/ArticlePage";
+import TopicPage from "./pages/topics/TopicPage";
+import StatisticsPage from "./pages/StatisticsPage";
+import ResearchPage from "./pages/ResearchPage";
+import ReportsPage from "./pages/ReportsPage";
+import ReportPage from "./pages/reports/ReportPage";
 
-// Main pages
-import Home from './pages/Home'
-import StatisticsPage from './pages/Statistics'
-import ResearchPage from './pages/Research'
-import ReportsPage from './pages/Reports'
+const AdminApp = lazy(() => import("./admin/AdminApp"));
 
-// Topic pages
-import PaymentGatewayTopic from './pages/topics/PaymentGateway'
-import FintechTopic from './pages/topics/Fintech'
-import PaymentProcessingTopic from './pages/topics/PaymentProcessing'
-import PaymentAPITopic from './pages/topics/PaymentAPI'
-import EcommercePaymentsTopic from './pages/topics/EcommercePayments'
-import PaymentIntegrationTopic from './pages/topics/PaymentIntegration'
-
-// Blog pages
-import BlogIndex from './pages/blog/BlogIndex'
-import RazorpayVsCashfree from './pages/blog/RazorpayVsCashfree'
-import StripeVsRazorpay from './pages/blog/StripeVsRazorpay'
-import CheckoutOptimization from './pages/blog/CheckoutOptimization'
-import InvoluntaryChurn from './pages/blog/InvoluntaryChurn'
-import PCIDSSGuide from './pages/blog/PCIDSSGuide'
-import PaddleVsStripe from './pages/blog/PaddleVsStripe'
-import UPIAutoPaySubscriptions from './pages/blog/UPIAutoPaySubscriptions'
-import CrossBorderPayments from './pages/blog/CrossBorderPayments'
-
-function ScrollToTop() {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-  return null
-}
-
-function Wrap({ children }) {
-  return <><ScrollToTop />{children}</>
+function AdminBootLoader() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-paper">
+      <Spinner className="h-8 w-8" />
+    </div>
+  );
 }
 
 export default function App() {
-  usePageTracking()
-
   return (
-    <div className="min-h-screen bg-white font-sans antialiased">
-      <Routes>
-        {/* Home */}
+    <Routes>
+      <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
-
-        {/* Blog */}
-        <Route path="/blog" element={<Wrap><BlogIndex /></Wrap>} />
-        <Route path="/blog/razorpay-vs-cashfree-vs-payu" element={<Wrap><RazorpayVsCashfree /></Wrap>} />
-        <Route path="/blog/stripe-vs-razorpay" element={<Wrap><StripeVsRazorpay /></Wrap>} />
-        <Route path="/blog/checkout-optimization" element={<Wrap><CheckoutOptimization /></Wrap>} />
-        <Route path="/blog/involuntary-churn-subscription" element={<Wrap><InvoluntaryChurn /></Wrap>} />
-        <Route path="/blog/pci-dss-ecommerce" element={<Wrap><PCIDSSGuide /></Wrap>} />
-        <Route path="/blog/paddle-vs-stripe-saas" element={<Wrap><PaddleVsStripe /></Wrap>} />
-        <Route path="/blog/upi-autopay-subscriptions" element={<Wrap><UPIAutoPaySubscriptions /></Wrap>} />
-        <Route path="/blog/cross-border-payments-india" element={<Wrap><CrossBorderPayments /></Wrap>} />
-
-        {/* Topic hubs */}
-        <Route path="/topics/payment-gateway"    element={<Wrap><PaymentGatewayTopic /></Wrap>} />
-        <Route path="/topics/fintech"            element={<Wrap><FintechTopic /></Wrap>} />
-        <Route path="/topics/payment-processing" element={<Wrap><PaymentProcessingTopic /></Wrap>} />
-        <Route path="/topics/payment-api"        element={<Wrap><PaymentAPITopic /></Wrap>} />
-        <Route path="/topics/ecommerce-payments" element={<Wrap><EcommercePaymentsTopic /></Wrap>} />
-        <Route path="/topics/payment-integration"element={<Wrap><PaymentIntegrationTopic /></Wrap>} />
-
-        {/* Authority pages */}
-        <Route path="/statistics" element={<Wrap><StatisticsPage /></Wrap>} />
-        <Route path="/research"   element={<Wrap><ResearchPage /></Wrap>} />
-        <Route path="/reports"    element={<Wrap><ReportsPage /></Wrap>} />
-      </Routes>
-    </div>
-  )
+        <Route path="/blog" element={<BlogIndex />} />
+        <Route path="/blog/:slug" element={<ArticlePage />} />
+        <Route path="/topics/:slug" element={<TopicPage />} />
+        <Route path="/statistics" element={<StatisticsPage />} />
+        <Route path="/research" element={<ResearchPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
+        <Route path="/reports/:slug" element={<ReportPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+      <Route
+        path="/admin/*"
+        element={
+          <Suspense fallback={<AdminBootLoader />}>
+            <AdminApp />
+          </Suspense>
+        }
+      />
+    </Routes>
+  );
 }
