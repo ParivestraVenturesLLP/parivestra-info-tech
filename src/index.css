@@ -73,8 +73,8 @@
   }
 
   ::selection {
-    background-color: var(--color-accent);
-    color: var(--color-paper);
+    background-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
+    color: var(--color-ink);
   }
 
   :focus-visible {
