@@ -104,18 +104,15 @@ export default function ArticlePage() {
         </Container>
       </div>
 
-      {article.coverImageUrl && (
-        <Container className="max-w-5xl -mt-1">
-          <img
-            src={article.coverImageUrl}
-            alt={article.coverImageAlt || article.title}
-            className="aspect-[16/9] w-full rounded-3xl object-cover"
-          />
-        </Container>
-      )}
-
-      <Container className="grid gap-12 py-14 lg:grid-cols-[1fr_240px] lg:items-start">
+      <Container className="grid gap-12 py-14 lg:grid-cols-[1fr_280px] lg:items-start">
         <div className="max-w-2xl space-y-12">
+          {article.coverImageUrl && (
+            <img
+              src={article.coverImageUrl}
+              alt={article.coverImageAlt || article.title}
+              className="aspect-video w-full rounded-3xl object-cover"
+            />
+          )}
           <MarkdownRenderer content={article.contentMarkdown} />
           <KeyTakeaways points={article.keyTakeaways} />
           <FAQAccordion faqs={article.faqs} />

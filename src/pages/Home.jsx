@@ -7,6 +7,7 @@ import { Skeleton } from "../components/ui/Skeleton";
 import { EmptyState } from "../components/ui/EmptyState";
 import { ArticleCard } from "../components/content/ArticleCard";
 import { HeroSlider } from "../components/content/HeroSlider";
+import { RotatingWord } from "../components/content/RotatingWord";
 import { useFirestoreQuery } from "../hooks/useFirestoreQuery";
 import { getPublishedArticles } from "../lib/firestore/articles";
 import { getPublishedTopics } from "../lib/firestore/topics";
@@ -52,14 +53,12 @@ export default function Home() {
 
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: [16, 0, 0, -8, 0] }}
-            transition={{
-              opacity: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-              y: { duration: 5, ease: "easeInOut", repeat: Infinity, repeatDelay: 1 },
-            }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="mt-5 max-w-3xl font-serif text-5xl leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl"
           >
-            Clarity on the things that matter.
+            Clarity on the things that{" "}
+            <RotatingWord words={["matter", "count", "last"]} />.
           </motion.h1>
 
           <motion.p

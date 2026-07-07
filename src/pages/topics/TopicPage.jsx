@@ -6,8 +6,9 @@ import { EmptyState } from "../../components/ui/EmptyState";
 import { ArticleCard } from "../../components/content/ArticleCard";
 import { MarkdownRenderer } from "../../components/content/MarkdownRenderer";
 import { Breadcrumbs } from "../../components/content/Breadcrumbs";
+import { RelatedResources } from "../../components/content/RelatedResources";
 import { useFirestoreQuery } from "../../hooks/useFirestoreQuery";
-import { getTopicBySlug } from "../../lib/firestore/topics";
+import { getTopicBySlug, getPublishedTopics } from "../../lib/firestore/topics";
 import { getPublishedArticles } from "../../lib/firestore/articles";
 import NotFound from "../NotFound";
 
@@ -24,8 +25,12 @@ export default function TopicPage() {
     }
     if (!topic) return { topic: null };
 
-    const articles = await getPublishedArticles({ topicSlug: slug, max: 30 });
-    return { topic, articles };
+    const [articles, allTopics] = await Promise.all([
+      getPublishedArticles({ topicSlug: slug, max: 30 }),
+      getPublishedTopics(),
+    ]);
+    const otherTopics = allTopics.filter((t) => t.slug !== slug).slice(0, 6);
+    return { topic, articles, otherTopics };
   }, [slug]);
 
   if (loading) {
@@ -39,7 +44,7 @@ export default function TopicPage() {
 
   if (!data?.topic) return <NotFound />;
 
-  const { topic, articles } = data;
+  const { topic, articles, otherTopics } = data;
 
   return (
     <Container className="py-16 sm:py-20">
@@ -72,20 +77,26 @@ export default function TopicPage() {
         </div>
       )}
 
-      <div className="mt-14">
-        <h2 className="mb-6 font-serif text-2xl text-ink">Articles in this topic</h2>
-        {articles.length ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {articles.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
-            ))}
-          </div>
-        ) : (
-          <EmptyState
-            title="No articles yet"
-            description="Articles tagged with this topic from the admin panel will appear here."
-          />
-        )}
+      <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_240px] lg:items-start">
+        <div>
+          <h2 className="mb-6 font-serif text-2xl text-ink">Articles in this topic</h2>
+          {articles.length ? (
+            <div className="grid gap-6 sm:grid-cols-2">
+              {articles.map((article) => (
+                <ArticleCard key={article.slug} article={article} />
+              ))}
+            </div>
+          ) : (
+            <EmptyState
+              title="No articles yet"
+              description="Articles tagged with this topic from the admin panel will appear here."
+            />
+          )}
+        </div>
+
+        <div className="lg:sticky lg:top-24">
+          <RelatedResources topics={otherTopics} />
+        </div>
       </div>
     </Container>
   );
