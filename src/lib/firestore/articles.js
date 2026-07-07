@@ -5,6 +5,7 @@ import {
   getCountFromServer,
   getDoc,
   getDocs,
+  increment,
   limit as fbLimit,
   orderBy,
   query,
@@ -98,4 +99,8 @@ export async function updateArticle(slug, data, { justPublished } = {}) {
 
 export async function deleteArticle(slug) {
   await deleteDoc(doc(col, slug));
+}
+
+export async function incrementArticleViews(slug) {
+  await updateDoc(doc(col, slug), { views: increment(1) });
 }

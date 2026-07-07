@@ -1,6 +1,22 @@
 import { Helmet } from "react-helmet-async";
 import { BASE_URL, DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, SITE_NAME } from "../../lib/seo";
 
+const ORGANIZATION_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: BASE_URL,
+  logo: `${BASE_URL}/logo.png`,
+};
+
+const WEBSITE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: BASE_URL,
+  inLanguage: "en",
+};
+
 export function SEOHead({
   title,
   description = DEFAULT_DESCRIPTION,
@@ -12,11 +28,13 @@ export function SEOHead({
   updatedAt,
   breadcrumbs,
   faqs,
+  author,
+  keywords,
 }) {
   const fullTitle = title ? `${title} — ${SITE_NAME}` : `${SITE_NAME} — Ideas, Research & Stories Worth Reading`;
   const canonical = `${BASE_URL}${path}`;
 
-  const schemas = [];
+  const schemas = [ORGANIZATION_SCHEMA, WEBSITE_SCHEMA];
 
   if (breadcrumbs?.length) {
     schemas.push({
@@ -40,8 +58,16 @@ export function SEOHead({
       image: ogImage,
       datePublished: publishedAt,
       dateModified: updatedAt || publishedAt,
-      publisher: { "@type": "Organization", name: SITE_NAME },
+      author: author
+        ? { "@type": "Person", name: author.name }
+        : { "@type": "Organization", name: SITE_NAME },
+      publisher: {
+        "@type": "Organization",
+        name: SITE_NAME,
+        logo: { "@type": "ImageObject", url: `${BASE_URL}/logo.png` },
+      },
       mainEntityOfPage: canonical,
+      ...(keywords?.length ? { keywords: keywords.join(", ") } : {}),
     });
   }
 
@@ -61,6 +87,7 @@ export function SEOHead({
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {keywords?.length && <meta name="keywords" content={keywords.join(", ")} />}
       <link rel="canonical" href={canonical} />
       {noindex && <meta name="robots" content="noindex, nofollow" />}
 

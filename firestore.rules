@@ -39,7 +39,12 @@ service cloud.firestore {
     // ---- draftable content: public read of published docs, admin sees/writes everything ----
     match /articles/{slug} {
       allow get, list: if resource.data.status == 'published' || isAdmin();
-      allow create, update, delete: if isAdmin();
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin() || (
+        resource.data.status == 'published' &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['views']) &&
+        request.resource.data.views == resource.data.get('views', 0) + 1
+      );
     }
 
     match /topics/{slug} {

@@ -15,6 +15,8 @@ export function ImageUploadField({
   const inputRef = useRef(null);
   const [progress, setProgress] = useState(null);
   const [error, setError] = useState(null);
+  const [showUrlInput, setShowUrlInput] = useState(false);
+  const [urlDraft, setUrlDraft] = useState("");
 
   async function handleFile(file) {
     setError(null);
@@ -46,6 +48,13 @@ export function ImageUploadField({
     onChange({ url: "", path: "" });
   }
 
+  function handleUseUrl() {
+    if (!urlDraft.trim()) return;
+    onChange({ url: urlDraft.trim(), path: "" });
+    setUrlDraft("");
+    setShowUrlInput(false);
+  }
+
   return (
     <div>
       <label className="text-sm font-medium text-ink">{label}</label>
@@ -63,6 +72,13 @@ export function ImageUploadField({
             </button>
             <button
               type="button"
+              onClick={() => setShowUrlInput((v) => !v)}
+              className="text-sm font-medium text-accent hover:text-accent-hover"
+            >
+              Paste URL
+            </button>
+            <button
+              type="button"
               onClick={handleRemove}
               className="text-sm font-medium text-status-critical"
             >
@@ -71,13 +87,42 @@ export function ImageUploadField({
           </div>
         </div>
       ) : (
-        <button
-          type="button"
-          onClick={() => inputRef.current?.click()}
-          className="mt-2 flex h-24 w-full items-center justify-center rounded-xl border border-dashed border-border text-sm text-ink-faint hover:border-accent hover:text-accent"
-        >
-          {progress !== null ? `Uploading… ${progress}%` : "Click to upload"}
-        </button>
+        <div className="mt-2 flex flex-col gap-2">
+          <button
+            type="button"
+            onClick={() => inputRef.current?.click()}
+            className="flex h-24 w-full items-center justify-center rounded-xl border border-dashed border-border text-sm text-ink-faint hover:border-accent hover:text-accent"
+          >
+            {progress !== null ? `Uploading… ${progress}%` : "Click to upload"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowUrlInput((v) => !v)}
+            className="self-start text-xs font-medium text-accent hover:text-accent-hover"
+          >
+            or paste an image URL instead
+          </button>
+        </div>
+      )}
+
+      {showUrlInput && (
+        <div className="mt-2 flex gap-2">
+          <input
+            type="url"
+            value={urlDraft}
+            onChange={(e) => setUrlDraft(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), handleUseUrl())}
+            placeholder="https://example.com/image.jpg"
+            className="w-full rounded-xl border border-border bg-paper px-4 py-2.5 text-sm text-ink focus:border-accent"
+          />
+          <button
+            type="button"
+            onClick={handleUseUrl}
+            className="shrink-0 rounded-xl border border-border px-4 py-2.5 text-sm font-medium text-ink hover:border-accent"
+          >
+            Use
+          </button>
+        </div>
       )}
 
       <input
