@@ -70,7 +70,7 @@ export default function TopicPage() {
 
       <div className="mt-6 max-w-2xl">
         <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">
-          Topic{topic.views > 0 ? ` · ${topic.views} view${topic.views === 1 ? "" : "s"}` : ""}
+          Topic · {topic.views || 0} view{(topic.views || 0) === 1 ? "" : "s"}
         </p>
         <h1 className="mt-4 font-serif text-4xl text-ink sm:text-5xl">{topic.name}</h1>
         <p className="mt-5 text-lg text-ink-muted">{topic.description}</p>

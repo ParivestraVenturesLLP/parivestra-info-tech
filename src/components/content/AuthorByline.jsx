@@ -34,7 +34,7 @@ export function AuthorByline({ author, date, readingTimeMinutes, views, size = "
         <p className="text-ink-faint">
           {date}
           {readingTimeMinutes ? ` · ${readingTimeMinutes} min read` : ""}
-          {views > 0 ? ` · ${formatViews(views)}` : ""}
+          {` · ${formatViews(views || 0)}`}
         </p>
       </div>
     </div>
