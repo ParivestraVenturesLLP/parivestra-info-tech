@@ -21,6 +21,7 @@ const emptyTopic = {
   status: "draft",
   seoTitle: "",
   seoDescription: "",
+  views: 0,
 };
 
 export default function TopicEditPage() {

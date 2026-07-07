@@ -40,6 +40,7 @@ export default function TopicsListPage() {
               { key: "name", label: "Name" },
               { key: "order", label: "Order" },
               { key: "status", label: "Status", render: (r) => <StatusBadge status={r.status} /> },
+              { key: "views", label: "Views", render: (r) => r.views || 0 },
               {
                 key: "actions",
                 label: "",

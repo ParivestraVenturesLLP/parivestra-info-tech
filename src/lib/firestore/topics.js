@@ -5,6 +5,7 @@ import {
   getCountFromServer,
   getDoc,
   getDocs,
+  increment,
   orderBy,
   query,
   serverTimestamp,
@@ -69,4 +70,8 @@ export async function updateTopic(slug, data) {
 
 export async function deleteTopic(slug) {
   await deleteDoc(doc(col, slug));
+}
+
+export async function incrementTopicViews(slug) {
+  await updateDoc(doc(col, slug), { views: increment(1) });
 }

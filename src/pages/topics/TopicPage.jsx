@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { SEOHead } from "../../components/seo/SEOHead";
 import { Container } from "../../components/layout/Container";
@@ -7,7 +8,7 @@ import { ArticleCard } from "../../components/content/ArticleCard";
 import { MarkdownRenderer } from "../../components/content/MarkdownRenderer";
 import { Breadcrumbs } from "../../components/content/Breadcrumbs";
 import { useFirestoreQuery } from "../../hooks/useFirestoreQuery";
-import { getTopicBySlug } from "../../lib/firestore/topics";
+import { getTopicBySlug, incrementTopicViews } from "../../lib/firestore/topics";
 import { getPublishedArticles } from "../../lib/firestore/articles";
 import NotFound from "../NotFound";
 
@@ -27,6 +28,13 @@ export default function TopicPage() {
     const articles = await getPublishedArticles({ topicSlug: slug, max: 30 });
     return { topic, articles };
   }, [slug]);
+
+  const countedRef = useRef(null);
+  useEffect(() => {
+    if (!data?.topic || countedRef.current === slug) return;
+    countedRef.current = slug;
+    incrementTopicViews(slug).catch(() => {});
+  }, [data, slug]);
 
   if (loading) {
     return (
@@ -61,7 +69,9 @@ export default function TopicPage() {
       />
 
       <div className="mt-6 max-w-2xl">
-        <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">Topic</p>
+        <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">
+          Topic{topic.views > 0 ? ` · ${topic.views} view${topic.views === 1 ? "" : "s"}` : ""}
+        </p>
         <h1 className="mt-4 font-serif text-4xl text-ink sm:text-5xl">{topic.name}</h1>
         <p className="mt-5 text-lg text-ink-muted">{topic.description}</p>
       </div>
