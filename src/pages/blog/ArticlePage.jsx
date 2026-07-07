@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { SEOHead } from "../../components/seo/SEOHead";
 import { Container } from "../../components/layout/Container";
 import { Skeleton } from "../../components/ui/Skeleton";
@@ -101,6 +101,23 @@ export default function ArticlePage() {
               readingTimeMinutes={article.readingTimeMinutes}
             />
           </div>
+
+          {related?.length > 0 && (
+            <div className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-2 border-t border-border pt-6 text-sm">
+              <span className="text-ink-faint">Also read:</span>
+              {related.slice(0, 3).map((other, i) => (
+                <span key={other.slug}>
+                  <Link
+                    to={`/blog/${other.slug}`}
+                    className="font-medium text-accent hover:text-accent-hover"
+                  >
+                    {other.title}
+                  </Link>
+                  {i < Math.min(related.length, 3) - 1 && <span className="text-ink-faint">,</span>}
+                </span>
+              ))}
+            </div>
+          )}
         </Container>
       </div>
 
