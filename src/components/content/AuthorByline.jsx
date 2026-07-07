@@ -1,9 +1,4 @@
-function formatViews(views) {
-  if (views >= 1000) return `${(views / 1000).toFixed(views >= 10000 ? 0 : 1)}k views`;
-  return `${views} view${views === 1 ? "" : "s"}`;
-}
-
-export function AuthorByline({ author, date, readingTimeMinutes, views, size = "md" }) {
+export function AuthorByline({ author, date, readingTimeMinutes, size = "md" }) {
   const initials = author?.name
     ? author.name
         .split(" ")
@@ -34,7 +29,6 @@ export function AuthorByline({ author, date, readingTimeMinutes, views, size = "
         <p className="text-ink-faint">
           {date}
           {readingTimeMinutes ? ` · ${readingTimeMinutes} min read` : ""}
-          {` · ${formatViews(views || 0)}`}
         </p>
       </div>
     </div>

@@ -41,7 +41,6 @@ export default function ArticlesListPage() {
               { key: "title", label: "Title" },
               { key: "type", label: "Type", render: (r) => (r.type === "research" ? "Research" : "Blog") },
               { key: "status", label: "Status", render: (r) => <StatusBadge status={r.status} /> },
-              { key: "views", label: "Views", render: (r) => r.views || 0 },
               {
                 key: "updatedAt",
                 label: "Updated",

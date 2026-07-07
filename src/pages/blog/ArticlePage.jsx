@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { SEOHead } from "../../components/seo/SEOHead";
 import { Container } from "../../components/layout/Container";
@@ -12,7 +11,7 @@ import { Breadcrumbs } from "../../components/content/Breadcrumbs";
 import { TableOfContents } from "../../components/content/TableOfContents";
 import { ReadingProgress } from "../../components/content/ReadingProgress";
 import { useFirestoreQuery } from "../../hooks/useFirestoreQuery";
-import { getArticleBySlug, getRelatedArticles, incrementArticleViews } from "../../lib/firestore/articles";
+import { getArticleBySlug, getRelatedArticles } from "../../lib/firestore/articles";
 import { getAuthorBySlug } from "../../lib/firestore/authors";
 import { getTopicBySlug } from "../../lib/firestore/topics";
 import { extractHeadings } from "../../lib/toc";
@@ -40,13 +39,6 @@ export default function ArticlePage() {
 
     return { article, author, related, topics: topics.filter(Boolean) };
   }, [slug]);
-
-  const countedRef = useRef(null);
-  useEffect(() => {
-    if (!data?.article || countedRef.current === slug) return;
-    countedRef.current = slug;
-    incrementArticleViews(slug).catch(() => {});
-  }, [data, slug]);
 
   if (loading) {
     return (
@@ -107,7 +99,6 @@ export default function ArticlePage() {
               author={author}
               date={article.publishedAt ? formatDate(article.publishedAt) : "Draft"}
               readingTimeMinutes={article.readingTimeMinutes}
-              views={article.views}
             />
           </div>
         </Container>

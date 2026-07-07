@@ -37,7 +37,6 @@ const emptyArticle = {
   seoDescription: "",
   canonicalUrl: "",
   featured: false,
-  views: 0,
 };
 
 export default function ArticleEditPage() {
