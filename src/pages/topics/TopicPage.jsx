@@ -77,7 +77,7 @@ export default function TopicPage() {
         </div>
       )}
 
-      <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_240px] lg:items-start">
+      <div className="mt-14 grid gap-12 md:grid-cols-[1fr_240px] md:items-start">
         <div>
           <h2 className="mb-6 font-serif text-2xl text-ink">Articles in this topic</h2>
           {articles.length ? (
@@ -94,7 +94,7 @@ export default function TopicPage() {
           )}
         </div>
 
-        <div className="lg:sticky lg:top-24">
+        <div className="md:sticky md:top-24">
           <RelatedResources topics={otherTopics} />
         </div>
       </div>

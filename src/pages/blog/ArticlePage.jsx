@@ -104,7 +104,7 @@ export default function ArticlePage() {
         </Container>
       </div>
 
-      <Container className="grid gap-12 py-14 lg:grid-cols-[1fr_280px] lg:items-start">
+      <Container className="grid gap-12 py-14 md:grid-cols-[1fr_280px] md:items-start">
         <div className="max-w-2xl space-y-12">
           {article.coverImageUrl && (
             <img
@@ -118,7 +118,7 @@ export default function ArticlePage() {
           <FAQAccordion faqs={article.faqs} />
         </div>
 
-        <div className="space-y-8 lg:sticky lg:top-24">
+        <div className="space-y-8 md:sticky md:top-24">
           <TableOfContents headings={headings} />
           <RelatedResources articles={related} topics={topics} />
         </div>
