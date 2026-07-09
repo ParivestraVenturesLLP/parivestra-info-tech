@@ -4,6 +4,7 @@ import { Container } from "../../components/layout/Container";
 import { Skeleton } from "../../components/ui/Skeleton";
 import { EmptyState } from "../../components/ui/EmptyState";
 import { ArticleCard } from "../../components/content/ArticleCard";
+import { RelatedResources } from "../../components/content/RelatedResources";
 import { useFirestoreQuery } from "../../hooks/useFirestoreQuery";
 import { useDebounce } from "../../hooks/useDebounce";
 import { getPublishedArticles } from "../../lib/firestore/articles";
@@ -51,65 +52,73 @@ export default function BlogIndex() {
         </h1>
       </div>
 
-      <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-wrap gap-2">
-          <button
-            onClick={() => setActiveTopic(null)}
-            className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
-              !activeTopic
-                ? "border-accent bg-accent-soft text-accent"
-                : "border-border text-ink-muted hover:border-ink/30"
-            }`}
-          >
-            All
-          </button>
-          {topics?.map((topic) => (
-            <button
-              key={topic.slug}
-              onClick={() => setActiveTopic(topic.slug)}
-              className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
-                activeTopic === topic.slug
-                  ? "border-accent bg-accent-soft text-accent"
-                  : "border-border text-ink-muted hover:border-ink/30"
-              }`}
-            >
-              {topic.name}
-            </button>
-          ))}
+      <div className="mt-14 grid gap-12 md:grid-cols-[1fr_240px] md:items-start">
+        <div>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setActiveTopic(null)}
+                className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
+                  !activeTopic
+                    ? "border-accent bg-accent-soft text-accent"
+                    : "border-border text-ink-muted hover:border-ink/30"
+                }`}
+              >
+                All
+              </button>
+              {topics?.map((topic) => (
+                <button
+                  key={topic.slug}
+                  onClick={() => setActiveTopic(topic.slug)}
+                  className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
+                    activeTopic === topic.slug
+                      ? "border-accent bg-accent-soft text-accent"
+                      : "border-border text-ink-muted hover:border-ink/30"
+                  }`}
+                >
+                  {topic.name}
+                </button>
+              ))}
+            </div>
+
+            <input
+              type="search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search articles…"
+              className="w-full rounded-full border border-border bg-paper-raised px-4 py-2 text-sm text-ink placeholder:text-ink-faint focus:border-accent sm:w-64"
+            />
+          </div>
+
+          <div className="mt-10">
+            {loading ? (
+              <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                {[...Array(6)].map((_, i) => (
+                  <Skeleton key={i} className="h-80 rounded-2xl" />
+                ))}
+              </div>
+            ) : filtered.length ? (
+              <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                {filtered.map((article) => (
+                  <ArticleCard key={article.slug} article={article} />
+                ))}
+              </div>
+            ) : (
+              <EmptyState
+                title="No articles found"
+                description={
+                  articles?.length
+                    ? "Try a different topic or search term."
+                    : "Articles published from the admin panel will appear here."
+                }
+              />
+            )}
+          </div>
         </div>
 
-        <input
-          type="search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search articles…"
-          className="w-full rounded-full border border-border bg-paper-raised px-4 py-2 text-sm text-ink placeholder:text-ink-faint focus:border-accent sm:w-64"
-        />
-      </div>
-
-      <div className="mt-10">
-        {loading ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[...Array(6)].map((_, i) => (
-              <Skeleton key={i} className="h-80 rounded-2xl" />
-            ))}
-          </div>
-        ) : filtered.length ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
-            ))}
-          </div>
-        ) : (
-          <EmptyState
-            title="No articles found"
-            description={
-              articles?.length
-                ? "Try a different topic or search term."
-                : "Articles published from the admin panel will appear here."
-            }
-          />
-        )}
+        <div className="md:sticky md:top-24">
+          <RelatedResources articles={articles?.slice(0, 5)} topics={topics?.slice(0, 6)} />
+        </div>
       </div>
     </Container>
   );

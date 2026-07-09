@@ -13,7 +13,7 @@ import { ReadingProgress } from "../../components/content/ReadingProgress";
 import { useFirestoreQuery } from "../../hooks/useFirestoreQuery";
 import { getArticleBySlug, getRelatedArticles } from "../../lib/firestore/articles";
 import { getAuthorBySlug } from "../../lib/firestore/authors";
-import { getTopicBySlug } from "../../lib/firestore/topics";
+import { getTopicBySlug, getPublishedTopics } from "../../lib/firestore/topics";
 import { extractHeadings } from "../../lib/toc";
 import { formatDate } from "../../lib/format";
 import NotFound from "../NotFound";
@@ -31,13 +31,18 @@ export default function ArticlePage() {
     }
     if (!article) return { article: null };
 
-    const [author, related, topics] = await Promise.all([
+    const [author, related, taggedTopics] = await Promise.all([
       getAuthorBySlug(article.authorId),
       getRelatedArticles(article),
       Promise.all((article.topicSlugs || []).slice(0, 3).map((s) => getTopicBySlug(s))),
     ]);
 
-    return { article, author, related, topics: topics.filter(Boolean) };
+    let topics = taggedTopics.filter(Boolean);
+    if (!topics.length) {
+      topics = (await getPublishedTopics()).slice(0, 6);
+    }
+
+    return { article, author, related, topics };
   }, [slug]);
 
   if (loading) {

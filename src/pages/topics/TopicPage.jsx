@@ -16,19 +16,19 @@ export default function TopicPage() {
   const { slug } = useParams();
 
   const { data, loading } = useFirestoreQuery(async () => {
-    let topic;
+    let topic, articles, allTopics;
     try {
-      topic = await getTopicBySlug(slug);
+      [topic, articles, allTopics] = await Promise.all([
+        getTopicBySlug(slug),
+        getPublishedArticles({ topicSlug: slug, max: 30 }),
+        getPublishedTopics(),
+      ]);
     } catch (err) {
       if (err.code === "permission-denied") return { topic: null };
       throw err;
     }
     if (!topic) return { topic: null };
 
-    const [articles, allTopics] = await Promise.all([
-      getPublishedArticles({ topicSlug: slug, max: 30 }),
-      getPublishedTopics(),
-    ]);
     const otherTopics = allTopics.filter((t) => t.slug !== slug).slice(0, 6);
     return { topic, articles, otherTopics };
   }, [slug]);

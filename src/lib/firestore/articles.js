@@ -43,20 +43,25 @@ export async function getRelatedArticles(article, max = 3) {
     const docs = await Promise.all(
       article.relatedArticleIds.slice(0, max).map((slug) => getArticleBySlug(slug))
     );
-    return docs.filter(Boolean);
+    const found = docs.filter(Boolean);
+    if (found.length) return found;
   }
 
-  if (!article.topicSlugs?.length) return [];
+  if (article.topicSlugs?.length) {
+    const q = query(
+      col,
+      where("status", "==", "published"),
+      where("topicSlugs", "array-contains", article.topicSlugs[0]),
+      orderBy("publishedAt", "desc"),
+      fbLimit(max + 1)
+    );
+    const snap = await getDocs(q);
+    const byTopic = snap.docs.map(toArticle).filter((a) => a.slug !== article.slug).slice(0, max);
+    if (byTopic.length) return byTopic;
+  }
 
-  const q = query(
-    col,
-    where("status", "==", "published"),
-    where("topicSlugs", "array-contains", article.topicSlugs[0]),
-    orderBy("publishedAt", "desc"),
-    fbLimit(max + 1)
-  );
-  const snap = await getDocs(q);
-  return snap.docs.map(toArticle).filter((a) => a.slug !== article.slug).slice(0, max);
+  const recent = await getPublishedArticles({ max: max + 1 });
+  return recent.filter((a) => a.slug !== article.slug).slice(0, max);
 }
 
 export async function getAllArticlesAdmin({ status } = {}) {
