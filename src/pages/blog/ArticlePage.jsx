@@ -6,6 +6,8 @@ import { MarkdownRenderer } from "../../components/content/MarkdownRenderer";
 import { KeyTakeaways } from "../../components/content/KeyTakeaways";
 import { FAQAccordion } from "../../components/content/FAQAccordion";
 import { RelatedResources } from "../../components/content/RelatedResources";
+import { PageBadge } from "../../components/content/PageBadge";
+import { AIReadableAnswer } from "../../components/content/AIReadableAnswer";
 import { AuthorByline } from "../../components/content/AuthorByline";
 import { Breadcrumbs } from "../../components/content/Breadcrumbs";
 import { TableOfContents } from "../../components/content/TableOfContents";
@@ -90,8 +92,11 @@ export default function ArticlePage() {
               { label: article.title, path: `/blog/${article.slug}` },
             ]}
           />
+          <div className="mt-6">
+            <PageBadge>Article</PageBadge>
+          </div>
           {article.dek && (
-            <p className="mt-6 font-mono text-xs tracking-[0.2em] text-accent uppercase">
+            <p className="mt-4 font-mono text-xs tracking-[0.2em] text-accent uppercase">
               {article.dek}
             </p>
           )}
@@ -111,6 +116,7 @@ export default function ArticlePage() {
 
       <Container className="grid gap-12 py-14 md:grid-cols-[1fr_280px] md:items-start">
         <div className="max-w-2xl space-y-12">
+          <AIReadableAnswer faq={article.faqs?.[0]} />
           {article.coverImageUrl && (
             <img
               src={article.coverImageUrl}

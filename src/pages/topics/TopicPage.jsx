@@ -7,6 +7,7 @@ import { ArticleCard } from "../../components/content/ArticleCard";
 import { MarkdownRenderer } from "../../components/content/MarkdownRenderer";
 import { Breadcrumbs } from "../../components/content/Breadcrumbs";
 import { RelatedResources } from "../../components/content/RelatedResources";
+import { PageBadge } from "../../components/content/PageBadge";
 import { useFirestoreQuery } from "../../hooks/useFirestoreQuery";
 import { getTopicBySlug, getPublishedTopics } from "../../lib/firestore/topics";
 import { getPublishedArticles } from "../../lib/firestore/articles";
@@ -66,7 +67,7 @@ export default function TopicPage() {
       />
 
       <div className="mt-6 max-w-2xl">
-        <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">Topic</p>
+        <PageBadge>Topic Hub</PageBadge>
         <h1 className="mt-4 font-serif text-4xl text-ink sm:text-5xl">{topic.name}</h1>
         <p className="mt-5 text-lg text-ink-muted">{topic.description}</p>
       </div>
