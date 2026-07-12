@@ -19,7 +19,18 @@ function loadEnv() {
 loadEnv();
 
 const BASE_URL = "https://blog.parivestra.com";
-const STATIC_PATHS = ["/", "/blog", "/research", "/statistics", "/reports"];
+const STATIC_PATHS = [
+  "/",
+  "/blog",
+  "/research",
+  "/statistics",
+  "/reports",
+  "/social",
+  "/compilation",
+  "/resource",
+  "/deals-offers",
+  "/comparison",
+];
 
 const firebaseConfig = {
   apiKey: process.env.VITE_FIREBASE_API_KEY,

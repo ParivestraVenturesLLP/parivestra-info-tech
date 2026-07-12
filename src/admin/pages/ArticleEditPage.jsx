@@ -137,6 +137,11 @@ function ArticleForm({ isNew, slug, existing, authors }) {
             >
               <option value="blog">Blog</option>
               <option value="research">Research</option>
+              <option value="social">Social</option>
+              <option value="compilation">Compilation</option>
+              <option value="resource">Resource</option>
+              <option value="deals">Deals & Offers</option>
+              <option value="comparison">Comparison</option>
             </select>
           </div>
           <div>

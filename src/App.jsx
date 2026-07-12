@@ -11,6 +11,8 @@ import StatisticsPage from "./pages/StatisticsPage";
 import ResearchPage from "./pages/ResearchPage";
 import ReportsPage from "./pages/ReportsPage";
 import ReportPage from "./pages/reports/ReportPage";
+import CategoryPage from "./pages/CategoryPage";
+import { MAGNET_CATEGORIES } from "./data/magnetCategories";
 import PaymentProcessingTopic from "./pages/topics/static/PaymentProcessingTopic";
 import FintechTopic from "./pages/topics/static/FintechTopic";
 import EcommercePaymentsTopic from "./pages/topics/static/EcommercePaymentsTopic";
@@ -62,6 +64,13 @@ export default function App() {
         <Route path="/research" element={<ResearchPage />} />
         <Route path="/reports" element={<ReportsPage />} />
         <Route path="/reports/:slug" element={<ReportPage />} />
+        {MAGNET_CATEGORIES.map((category) => (
+          <Route
+            key={category.path}
+            path={category.path}
+            element={<CategoryPage {...category} />}
+          />
+        ))}
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route

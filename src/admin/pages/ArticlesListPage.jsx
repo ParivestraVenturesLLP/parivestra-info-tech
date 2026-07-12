@@ -10,6 +10,16 @@ import { useRefetchableQuery } from "../../hooks/useFirestoreQuery";
 import { deleteArticle, getAllArticlesAdmin } from "../../lib/firestore/articles";
 import { formatDate } from "../../lib/format";
 
+const TYPE_LABELS = {
+  blog: "Blog",
+  research: "Research",
+  social: "Social",
+  compilation: "Compilation",
+  resource: "Resource",
+  deals: "Deals & Offers",
+  comparison: "Comparison",
+};
+
 export default function ArticlesListPage() {
   const { data: articles, loading, refetch } = useRefetchableQuery(() => getAllArticlesAdmin());
   const [pendingDelete, setPendingDelete] = useState(null);
@@ -39,7 +49,7 @@ export default function ArticlesListPage() {
             rows={articles}
             columns={[
               { key: "title", label: "Title" },
-              { key: "type", label: "Type", render: (r) => (r.type === "research" ? "Research" : "Blog") },
+              { key: "type", label: "Type", render: (r) => TYPE_LABELS[r.type] ?? "Blog" },
               { key: "status", label: "Status", render: (r) => <StatusBadge status={r.status} /> },
               {
                 key: "updatedAt",
