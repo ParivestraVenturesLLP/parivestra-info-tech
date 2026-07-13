@@ -3,17 +3,5 @@
 > A multi-topic publication featuring in-depth articles, research, and data on AI, fintech, payments, and technology — written to inform, with cited sources.
 
 ## Topics
-- [Artificial Intelligence](https://blog.parivestra.com/topics/artificial-intelligence): AI models, tools, and their real-world impact.
-- [Fintech](https://blog.parivestra.com/topics/fintech): Financial technology, infrastructure, and innovation.
-- [Payments](https://blog.parivestra.com/topics/payments): How money moves — gateways, rails, and checkout.
-- [Tech News](https://blog.parivestra.com/topics/tech-news): Notable developments across the technology industry.
-- [Trending](https://blog.parivestra.com/topics/trending): What's currently shaping conversation across tech and finance.
 
 ## Articles
-- [Central Bank Digital Currencies: Where Global Pilots Stand Today](https://blog.parivestra.com/blog/cbdc-global-pilots-status): A status check on central bank digital currency pilots worldwide, and the genuinely difficult questions they're still working through.
-- [AI Agents and the Future of Automated Work](https://blog.parivestra.com/blog/ai-agents-future-of-work): AI agents that can take multi-step actions on your behalf are the next frontier — and they come with a very different risk profile than chatbots.
-- [How AI Is Reshaping Fintech: From Fraud Detection to Personalized Banking](https://blog.parivestra.com/blog/ai-reshaping-fintech-2026): Banks and fintechs now lean on machine learning for fraud detection, underwriting, and personalization — often in ways customers never see directly.
-- [Embedded Finance: Why Every App Is Becoming a Bank](https://blog.parivestra.com/blog/embedded-finance-explained): Ride-sharing apps offering debit cards, e-commerce platforms offering loans — embedded finance is changing who "counts" as a financial institution.
-- [Generative AI in 2026: Where the Technology Actually Stands](https://blog.parivestra.com/blog/generative-ai-2026-status): A grounded look at where generative AI genuinely delivers value today, and where the gap between demo and dependable product remains wide.
-- [Open Banking and Data Sharing: The Next Phase of Financial Infrastructure](https://blog.parivestra.com/blog/open-banking-next-phase): Open banking frameworks are pushing financial data portability further — here's what's actually changing for consumers and institutions.
-- [The Rise of Real-Time Payments: What Instant Rails Mean for Consumers](https://blog.parivestra.com/blog/real-time-payments-rise): From UPI to FedNow, real-time payment rails are reshaping how money moves between people and businesses — and what it means for cash flow.

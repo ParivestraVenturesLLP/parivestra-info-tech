@@ -1,4 +1,4 @@
-const topicNames = {
+export const topicNames = {
   "payment-gateway": "Payment Gateway",
   fintech: "Fintech",
   "payment-processing": "Payment Processing",
@@ -7,7 +7,7 @@ const topicNames = {
   "payment-integration": "Payment Integration",
 };
 
-const articleTitles = {
+export const articleTitles = {
   "stripe-vs-razorpay": "Stripe vs Razorpay: A Real Comparison for Indian Ecommerce Brands (2026)",
   "paddle-vs-stripe-saas": "Paddle vs Stripe for SaaS: When the Merchant of Record Model Makes Sense",
   "razorpay-vs-cashfree-vs-payu": "Razorpay vs Cashfree vs PayU: Which Indian Payment Gateway is Actually Better?",

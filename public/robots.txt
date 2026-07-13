@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://blog.parivestra.com/sitemap.xml
+Sitemap: https://parivestrabytes.com/sitemap.xml
