@@ -1,10 +1,29 @@
 import { mkdirSync, writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { preview } from "vite";
-import puppeteer from "puppeteer";
 import { fetchPublishedContent } from "./lib/content.js";
 import { topicNames, articleTitles } from "../src/pages/topics/static/staticContentLinks.js";
 import { MAGNET_CATEGORIES } from "../src/data/magnetCategories.js";
+
+async function launchBrowser() {
+  // Vercel's build container is missing the shared libraries (libnspr4, libnss3, …)
+  // that puppeteer's bundled Chrome needs, so use the serverless-packaged Chromium there.
+  // Locally (Windows/macOS/Linux dev machines) fall back to regular puppeteer.
+  if (process.env.VERCEL) {
+    const [{ default: chromium }, { default: puppeteerCore }] = await Promise.all([
+      import("@sparticuz/chromium"),
+      import("puppeteer-core"),
+    ]);
+    return puppeteerCore.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: true,
+    });
+  }
+
+  const { default: puppeteer } = await import("puppeteer");
+  return puppeteer.launch();
+}
 
 const STATIC_PATHS = [
   "/",
@@ -58,7 +77,7 @@ async function main() {
   const server = await preview({ preview: { port: 4173 } });
   const base = server.resolvedUrls.local[0].replace(/\/$/, "");
 
-  const browser = await puppeteer.launch();
+  const browser = await launchBrowser();
   const page = await browser.newPage();
 
   let clean = 0;
