@@ -80,6 +80,25 @@ async function main() {
   const browser = await launchBrowser();
   const page = await browser.newPage();
 
+  // Prerendering loads every page in a real browser, which would otherwise fire
+  // real analytics/ad pageviews (GA, Vercel Analytics, AdSense) on every build.
+  await page.setRequestInterception(true);
+  const TRACKING_PATTERNS = [
+    "googletagmanager.com",
+    "google-analytics.com",
+    "googlesyndication.com",
+    "doubleclick.net",
+    "/_vercel/insights/",
+    "/_vercel/speed-insights/",
+  ];
+  page.on("request", (req) => {
+    if (TRACKING_PATTERNS.some((pattern) => req.url().includes(pattern))) {
+      req.abort();
+    } else {
+      req.continue();
+    }
+  });
+
   let clean = 0;
   let partial = 0;
   let failed = 0;
