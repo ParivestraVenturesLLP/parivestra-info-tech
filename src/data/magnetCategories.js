@@ -1,3 +1,11 @@
+export const MAGNET_TYPE_TONES = {
+  social: "secondary",
+  compilation: "accent",
+  resource: "good",
+  deals: "warning",
+  comparison: "critical",
+};
+
 export const MAGNET_CATEGORIES = [
   {
     type: "social",

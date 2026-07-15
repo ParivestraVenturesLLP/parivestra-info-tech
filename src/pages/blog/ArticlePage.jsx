@@ -15,6 +15,7 @@ import { useFirestoreQuery } from "../../hooks/useFirestoreQuery";
 import { getArticleBySlug, getRelatedArticles } from "../../lib/firestore/articles";
 import { getAuthorBySlug } from "../../lib/firestore/authors";
 import { getTopicBySlug, getPublishedTopics } from "../../lib/firestore/topics";
+import { MAGNET_CATEGORIES, MAGNET_TYPE_TONES } from "../../data/magnetCategories";
 import { extractHeadings } from "../../lib/toc";
 import { formatDate } from "../../lib/format";
 import NotFound from "../NotFound";
@@ -92,7 +93,14 @@ export default function ArticlePage() {
             ]}
           />
           <div className="mt-6">
-            <PageBadge>Article</PageBadge>
+            {(() => {
+              const category = MAGNET_CATEGORIES.find((c) => c.type === article.type);
+              return category ? (
+                <PageBadge tone={MAGNET_TYPE_TONES[article.type]}>{category.label}</PageBadge>
+              ) : (
+                <PageBadge>{article.type === "research" ? "Research" : "Article"}</PageBadge>
+              );
+            })()}
           </div>
           {article.dek && (
             <p className="mt-4 font-mono text-xs tracking-[0.2em] text-accent uppercase">
