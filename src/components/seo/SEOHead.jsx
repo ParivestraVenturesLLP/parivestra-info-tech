@@ -7,6 +7,7 @@ const ORGANIZATION_SCHEMA = {
   name: SITE_NAME,
   url: BASE_URL,
   logo: `${BASE_URL}/logo.png`,
+  description: DEFAULT_DESCRIPTION,
 };
 
 const WEBSITE_SCHEMA = {
