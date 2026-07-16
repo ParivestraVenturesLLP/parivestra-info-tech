@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Navbar } from "./Navbar";
@@ -5,6 +6,15 @@ import { Footer } from "./Footer";
 
 export function PublicLayout() {
   const location = useLocation();
+
+  useEffect(() => {
+    if (typeof window.gtag !== "function") return;
+    window.gtag("event", "page_view", {
+      page_path: location.pathname + location.search,
+      page_location: window.location.href,
+      page_title: document.title,
+    });
+  }, [location.pathname, location.search]);
 
   return (
     <div className="flex min-h-screen flex-col bg-paper">

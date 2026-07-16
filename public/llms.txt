@@ -3,5 +3,23 @@
 > A multi-topic publication featuring in-depth articles, research, and data on AI, fintech, payments, and technology — written to inform, with cited sources.
 
 ## Topics
+- [Artificial Intelligence](https://parivestrabytes.com/topics/artificial-intelligence): AI models, tools, and their real-world impact.
+- [Fintech](https://parivestrabytes.com/topics/fintech): Financial technology, infrastructure, and innovation.
+- [Payments](https://parivestrabytes.com/topics/payments): How money moves — gateways, rails, and checkout.
+- [Tech News](https://parivestrabytes.com/topics/tech-news): Notable developments across the technology industry.
+- [Trending](https://parivestrabytes.com/topics/trending): What's currently shaping conversation across tech and finance.
 
 ## Articles
+- [How to Actually Negotiate Lower Payment Gateway Fees (Without Switching Providers)](https://parivestrabytes.com/blog/negotiate-lower-payment-gateway-fees): Most merchants never renegotiate their payment gateway fees after onboarding. Here's what actually gives you leverage — volume, vertical risk profile, and payment-method mix — and how to use it.
+- [PayPal vs Razorpay for Indian Businesses: Fees, Settlement Time & When Each Wins](https://parivestrabytes.com/blog/paypal-vs-razorpay-indian-businesses): PayPal and Razorpay solve different problems for Indian businesses — one is built for cross-border collections, the other for domestic-first payment stacks. Here's how they actually compare.
+- [5 Payment Trends Every Founder Should Know Before 2027](https://parivestrabytes.com/blog/5-payment-trends-founders-should-know-2027): From UPI's global expansion to AI-driven fraud detection, here are five payment trends worth tracking if you're running a checkout, subscription, or cross-border business.
+- [Payment Gateway Glossary: 30 Terms Every Ecommerce Operator Should Know](https://parivestrabytes.com/blog/payment-gateway-glossary): A practical glossary covering the payment gateway, compliance, and settlement terminology that shows up constantly in vendor contracts and dashboards — explained in plain language.
+- [The Payments Stack Reading List: Compliance, Gateways & Checkout, in One Place](https://parivestrabytes.com/blog/payments-stack-reading-list): A curated roundup of our deep-dive guides on payment gateways, compliance, and checkout — organized by the order you'd actually need them in.
+- [UPI at the Center: How India's Real-Time Rail Became 85% of Retail Digital Payments](https://parivestrabytes.com/blog/upi-85-percent-retail-digital-payments-india): UPI now accounts for roughly 85% of India's retail digital payment volume and about 49% of global real-time transaction volume. Here's what the numbers show and why it matters for businesses building on top of it.
+- [Central Bank Digital Currencies: Where Global Pilots Stand Today](https://parivestrabytes.com/blog/cbdc-global-pilots-status): A status check on central bank digital currency pilots worldwide, and the genuinely difficult questions they're still working through.
+- [AI Agents and the Future of Automated Work](https://parivestrabytes.com/blog/ai-agents-future-of-work): AI agents that can take multi-step actions on your behalf are the next frontier — and they come with a very different risk profile than chatbots.
+- [How AI Is Reshaping Fintech: From Fraud Detection to Personalized Banking](https://parivestrabytes.com/blog/ai-reshaping-fintech-2026): Banks and fintechs now lean on machine learning for fraud detection, underwriting, and personalization — often in ways customers never see directly.
+- [Embedded Finance: Why Every App Is Becoming a Bank](https://parivestrabytes.com/blog/embedded-finance-explained): Ride-sharing apps offering debit cards, e-commerce platforms offering loans — embedded finance is changing who "counts" as a financial institution.
+- [Generative AI in 2026: Where the Technology Actually Stands](https://parivestrabytes.com/blog/generative-ai-2026-status): A grounded look at where generative AI genuinely delivers value today, and where the gap between demo and dependable product remains wide.
+- [Open Banking and Data Sharing: The Next Phase of Financial Infrastructure](https://parivestrabytes.com/blog/open-banking-next-phase): Open banking frameworks are pushing financial data portability further — here's what's actually changing for consumers and institutions.
+- [The Rise of Real-Time Payments: What Instant Rails Mean for Consumers](https://parivestrabytes.com/blog/real-time-payments-rise): From UPI to FedNow, real-time payment rails are reshaping how money moves between people and businesses — and what it means for cash flow.
