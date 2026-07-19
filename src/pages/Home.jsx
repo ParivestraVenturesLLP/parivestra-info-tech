@@ -67,10 +67,33 @@ function ReportSlide({ report }) {
       to={`/reports/${report.slug}`}
       className="group grid overflow-hidden rounded-3xl border border-border bg-paper-raised sm:grid-cols-[220px_1fr]"
     >
-      <div className="flex items-center justify-center bg-secondary-soft p-10 text-secondary sm:p-8">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
-          <path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" strokeWidth="1.4" />
-          <path d="M9 12h6M9 16h6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <div className="relative flex items-center justify-center overflow-hidden bg-secondary-soft text-secondary">
+        {report.coverImageUrl && (
+          <img
+            src={report.coverImageUrl}
+            alt={report.coverImageAlt || report.title}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          />
+        )}
+        <svg
+          width="56"
+          height="56"
+          viewBox="0 0 24 24"
+          fill="none"
+          className={report.coverImageUrl ? "relative drop-shadow-lg" : ""}
+        >
+          <path
+            d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"
+            stroke={report.coverImageUrl ? "white" : "currentColor"}
+            strokeWidth="1.4"
+          />
+          <path
+            d="M9 12h6M9 16h6"
+            stroke={report.coverImageUrl ? "white" : "currentColor"}
+            strokeWidth="1.4"
+            strokeLinecap="round"
+          />
         </svg>
       </div>
       <div className="flex flex-col justify-center gap-3 p-8 sm:p-10">

@@ -84,7 +84,16 @@ export default function ArticlePage() {
       />
 
       <div className="border-b border-border bg-paper-raised">
-        <Container className="max-w-3xl py-14 sm:py-20">
+        {article.coverImageUrl && (
+          <Container className="max-w-5xl pt-10 sm:pt-14">
+            <img
+              src={article.coverImageUrl}
+              alt={article.coverImageAlt || article.title}
+              className="aspect-21/9 w-full rounded-3xl object-cover sm:aspect-3/1"
+            />
+          </Container>
+        )}
+        <Container className="max-w-3xl py-10 sm:py-14">
           <Breadcrumbs
             items={[
               { label: "Home", path: "/" },
@@ -123,13 +132,6 @@ export default function ArticlePage() {
 
       <Container className="grid gap-12 py-14 md:grid-cols-[1fr_280px] md:items-start">
         <div className="max-w-2xl space-y-12">
-          {article.coverImageUrl && (
-            <img
-              src={article.coverImageUrl}
-              alt={article.coverImageAlt || article.title}
-              className="aspect-video w-full rounded-3xl object-cover"
-            />
-          )}
           <MarkdownRenderer content={article.contentMarkdown} />
           <KeyTakeaways points={article.keyTakeaways} />
           <FAQAccordion faqs={article.faqs} />
