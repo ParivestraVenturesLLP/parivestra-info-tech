@@ -9,7 +9,8 @@
     "build": "vite build",
     "postbuild": "node scripts/prerender.js",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "seed": "node scripts/seed-content.js"
   },
   "dependencies": {
     "@fontsource-variable/fraunces": "^5.2.9",

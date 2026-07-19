@@ -10,11 +10,11 @@ const trendIcon = { up: "↑", down: "↓", flat: "→" };
 
 export function StatCard({ stat }) {
   return (
-    <div className="rounded-2xl border border-border bg-paper-raised p-6">
-      <p className="text-sm text-ink-muted">{stat.label}</p>
-      <p className="mt-2 font-mono text-3xl font-semibold tracking-tight text-ink">
+    <div className="min-w-0 rounded-2xl border border-border bg-paper-raised p-6">
+      <p className="text-sm wrap-break-word text-ink-muted">{stat.label}</p>
+      <p className="mt-2 font-mono text-3xl font-semibold tracking-tight wrap-break-word text-ink">
         {formatStat(stat.value, stat.format)}
-        {stat.unit && <span className="ml-1 text-lg text-ink-faint">{stat.unit}</span>}
+        {stat.unit && <span className="ml-1 text-lg wrap-break-word text-ink-faint">{stat.unit}</span>}
       </p>
       {stat.deltaLabel && (
         <p className={`mt-1 text-sm font-medium ${trendColor[stat.trend] || "text-ink-faint"}`}>
