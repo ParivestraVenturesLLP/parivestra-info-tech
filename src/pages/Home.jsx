@@ -7,15 +7,97 @@ import { Skeleton } from "../components/ui/Skeleton";
 import { EmptyState } from "../components/ui/EmptyState";
 import { ArticleCard } from "../components/content/ArticleCard";
 import { HeroSlider } from "../components/content/HeroSlider";
+import { CardSlider } from "../components/content/CardSlider";
 import { RotatingWord } from "../components/content/RotatingWord";
+import { StatCard } from "../components/content/StatCard";
+import { PageBadge } from "../components/content/PageBadge";
 import { useFirestoreQuery } from "../hooks/useFirestoreQuery";
 import { getPublishedArticles } from "../lib/firestore/articles";
 import { getPublishedTopics } from "../lib/firestore/topics";
+import { getPublishedReports } from "../lib/firestore/reports";
+import { getPublishedStatsByCategory } from "../lib/firestore/stats";
+import { MAGNET_CATEGORIES, MAGNET_TYPE_TONES } from "../data/magnetCategories";
+import { formatDate } from "../lib/format";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0 },
 };
+
+const MAGNET_TYPES = MAGNET_CATEGORIES.map((c) => c.type);
+
+function ArticleSlide({ article, badge }) {
+  const dateLabel = article.publishedAt ? formatDate(article.publishedAt) : "";
+  return (
+    <Link
+      to={`/blog/${article.slug}`}
+      className="group grid overflow-hidden rounded-3xl border border-border bg-paper-raised sm:grid-cols-2"
+    >
+      <div className="aspect-video overflow-hidden bg-accent-soft sm:aspect-auto">
+        {article.coverImageUrl && (
+          <img
+            src={article.coverImageUrl}
+            alt={article.coverImageAlt || article.title}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          />
+        )}
+      </div>
+      <div className="flex flex-col justify-center gap-4 p-8 sm:p-10">
+        {badge ??
+          (article.topicSlugs?.[0] && (
+            <span className="w-fit rounded-full bg-accent-soft px-3 py-1 text-xs font-medium tracking-wide text-accent uppercase">
+              {article.topicSlugs[0].replace(/-/g, " ")}
+            </span>
+          ))}
+        <h3 className="font-serif text-2xl leading-tight text-ink sm:text-3xl">{article.title}</h3>
+        <p className="line-clamp-2 text-sm text-ink-muted">{article.excerpt}</p>
+        <p className="text-xs text-ink-faint">
+          {dateLabel}
+          {article.readingTimeMinutes ? ` · ${article.readingTimeMinutes} min read` : ""}
+        </p>
+      </div>
+    </Link>
+  );
+}
+
+function ReportSlide({ report }) {
+  return (
+    <Link
+      to={`/reports/${report.slug}`}
+      className="group grid overflow-hidden rounded-3xl border border-border bg-paper-raised sm:grid-cols-[220px_1fr]"
+    >
+      <div className="flex items-center justify-center bg-secondary-soft p-10 text-secondary sm:p-8">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
+          <path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" strokeWidth="1.4" />
+          <path d="M9 12h6M9 16h6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        </svg>
+      </div>
+      <div className="flex flex-col justify-center gap-3 p-8 sm:p-10">
+        <span className="w-fit rounded-full bg-secondary-soft px-3 py-1 text-xs font-medium tracking-wide text-secondary uppercase">
+          Report
+        </span>
+        <h3 className="font-serif text-2xl leading-tight text-ink sm:text-3xl">{report.title}</h3>
+        <p className="line-clamp-2 text-sm text-ink-muted">{report.summary}</p>
+        <p className="text-xs text-ink-faint">
+          {report.publishedAt ? formatDate(report.publishedAt) : "Coming soon"}
+          {report.fileSizeLabel ? ` · ${report.fileSizeLabel}` : ""}
+        </p>
+      </div>
+    </Link>
+  );
+}
+
+function SectionHeader({ title, viewAllPath }) {
+  return (
+    <div className="mb-8 flex items-baseline justify-between">
+      <h2 className="font-serif text-2xl text-ink">{title}</h2>
+      <Link to={viewAllPath} className="text-sm font-medium text-accent hover:text-accent-hover">
+        View all &rarr;
+      </Link>
+    </div>
+  );
+}
 
 export default function Home() {
   const { data: featured, loading: loadingFeatured } = useFirestoreQuery(
@@ -26,6 +108,22 @@ export default function Home() {
     () => getPublishedArticles({ type: "blog", max: 6 }),
     []
   );
+  const { data: research, loading: loadingResearch } = useFirestoreQuery(
+    () => getPublishedArticles({ type: "research", max: 6 }),
+    []
+  );
+  const { data: reports, loading: loadingReports } = useFirestoreQuery(
+    () => getPublishedReports(6),
+    []
+  );
+  const { data: magnetArticles, loading: loadingMagnet } = useFirestoreQuery(
+    () => getPublishedArticles({ type: MAGNET_TYPES, max: 6 }),
+    []
+  );
+  const { data: statGroups, loading: loadingStats } = useFirestoreQuery(
+    () => getPublishedStatsByCategory(),
+    []
+  );
   const { data: topics, loading: loadingTopics } = useFirestoreQuery(
     () => getPublishedTopics(),
     []
@@ -33,6 +131,7 @@ export default function Home() {
 
   const featuredSlugs = new Set((featured || []).map((a) => a.slug));
   const restArticles = (latest || []).filter((a) => !featuredSlugs.has(a.slug)).slice(0, 6);
+  const topStats = (statGroups || []).flatMap((g) => g.items).slice(0, 4);
 
   return (
     <>
@@ -92,12 +191,7 @@ export default function Home() {
       {/* Featured story */}
       <section className="py-16 sm:py-20">
         <Container>
-          <div className="mb-8 flex items-baseline justify-between">
-            <h2 className="font-serif text-2xl text-ink">Featured story</h2>
-            <Link to="/blog" className="text-sm font-medium text-accent hover:text-accent-hover">
-              View all &rarr;
-            </Link>
-          </div>
+          <SectionHeader title="Featured story" viewAllPath="/blog" />
 
           {loadingFeatured ? (
             <Skeleton className="h-105 w-full rounded-3xl" />
@@ -115,12 +209,7 @@ export default function Home() {
       {/* Latest articles */}
       <section className="border-t border-border bg-paper-raised py-16 sm:py-20">
         <Container>
-          <div className="mb-8 flex items-baseline justify-between">
-            <h2 className="font-serif text-2xl text-ink">Latest insights</h2>
-            <Link to="/blog" className="text-sm font-medium text-accent hover:text-accent-hover">
-              View all &rarr;
-            </Link>
-          </div>
+          <SectionHeader title="Latest insights" viewAllPath="/blog" />
 
           {loadingLatest ? (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -142,6 +231,85 @@ export default function Home() {
           )}
         </Container>
       </section>
+
+      {/* From Research */}
+      {(loadingResearch || research?.length > 0) && (
+        <section className="py-16 sm:py-20">
+          <Container>
+            <SectionHeader title="From Research" viewAllPath="/research" />
+            {loadingResearch ? (
+              <Skeleton className="h-80 w-full rounded-3xl" />
+            ) : (
+              <CardSlider items={research} renderItem={(a) => <ArticleSlide article={a} />} />
+            )}
+          </Container>
+        </section>
+      )}
+
+      {/* By the numbers */}
+      {(loadingStats || topStats.length > 0) && (
+        <section className="border-t border-border bg-paper-raised py-16 sm:py-20">
+          <Container>
+            <SectionHeader title="By the numbers" viewAllPath="/statistics" />
+            {loadingStats ? (
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {[...Array(4)].map((_, i) => (
+                  <Skeleton key={i} className="h-40 rounded-2xl" />
+                ))}
+              </div>
+            ) : (
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {topStats.map((stat) => (
+                  <StatCard key={stat.id} stat={stat} />
+                ))}
+              </div>
+            )}
+          </Container>
+        </section>
+      )}
+
+      {/* Latest Reports */}
+      {(loadingReports || reports?.length > 0) && (
+        <section className="py-16 sm:py-20">
+          <Container>
+            <SectionHeader title="Latest Reports" viewAllPath="/reports" />
+            {loadingReports ? (
+              <Skeleton className="h-64 w-full rounded-3xl" />
+            ) : (
+              <CardSlider items={reports} renderItem={(r) => <ReportSlide report={r} />} />
+            )}
+          </Container>
+        </section>
+      )}
+
+      {/* From the Magnet desk */}
+      {(loadingMagnet || magnetArticles?.length > 0) && (
+        <section className="border-t border-border bg-paper-raised py-16 sm:py-20">
+          <Container>
+            <SectionHeader title="From the Magnet desk" viewAllPath="/deals-offers" />
+            {loadingMagnet ? (
+              <Skeleton className="h-80 w-full rounded-3xl" />
+            ) : (
+              <CardSlider
+                items={magnetArticles}
+                renderItem={(a) => {
+                  const category = MAGNET_CATEGORIES.find((c) => c.type === a.type);
+                  return (
+                    <ArticleSlide
+                      article={a}
+                      badge={
+                        category && (
+                          <PageBadge tone={MAGNET_TYPE_TONES[a.type]}>{category.label}</PageBadge>
+                        )
+                      }
+                    />
+                  );
+                }}
+              />
+            )}
+          </Container>
+        </section>
+      )}
 
       {/* Topic collections */}
       <section className="py-16 sm:py-20">

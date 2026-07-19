@@ -23,7 +23,8 @@ function toArticle(snap) {
 
 export async function getPublishedArticles({ type, topicSlug, featured, max = 20 } = {}) {
   const clauses = [where("status", "==", "published")];
-  if (type) clauses.push(where("type", "==", type));
+  if (Array.isArray(type)) clauses.push(where("type", "in", type));
+  else if (type) clauses.push(where("type", "==", type));
   if (topicSlug) clauses.push(where("topicSlugs", "array-contains", topicSlug));
   if (featured !== undefined) clauses.push(where("featured", "==", featured));
 

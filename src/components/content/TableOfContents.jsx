@@ -25,7 +25,7 @@ export function TableOfContents({ headings = [] }) {
   if (!headings.length) return null;
 
   return (
-    <nav className="sticky top-24">
+    <nav className="md:sticky md:top-24">
       <p className="text-xs font-semibold tracking-widest text-ink-faint uppercase">
         On this page
       </p>
