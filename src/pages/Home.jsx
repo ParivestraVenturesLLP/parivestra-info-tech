@@ -111,6 +111,13 @@ function ReportSlide({ report }) {
   );
 }
 
+function badgeForArticle(article) {
+  const category = MAGNET_CATEGORIES.find((c) => c.type === article.type);
+  if (category) return <PageBadge tone={MAGNET_TYPE_TONES[article.type]}>{category.label}</PageBadge>;
+  if (article.type === "research") return <PageBadge>Research</PageBadge>;
+  return null;
+}
+
 function SectionHeader({ title, viewAllPath }) {
   return (
     <div className="mb-8 flex items-baseline justify-between">
@@ -125,6 +132,10 @@ function SectionHeader({ title, viewAllPath }) {
 export default function Home() {
   const { data: featured, loading: loadingFeatured } = useFirestoreQuery(
     () => getPublishedArticles({ featured: true, max: 6 }),
+    []
+  );
+  const { data: newlyAdded, loading: loadingNewlyAdded } = useFirestoreQuery(
+    () => getPublishedArticles({ max: 8 }),
     []
   );
   const { data: latest, loading: loadingLatest } = useFirestoreQuery(
@@ -154,6 +165,7 @@ export default function Home() {
 
   const featuredSlugs = new Set((featured || []).map((a) => a.slug));
   const restArticles = (latest || []).filter((a) => !featuredSlugs.has(a.slug)).slice(0, 6);
+  const recentlyAdded = (newlyAdded || []).filter((a) => !featuredSlugs.has(a.slug)).slice(0, 6);
   const topStats = (statGroups || []).flatMap((g) => g.items).slice(0, 4);
 
   return (
@@ -228,6 +240,28 @@ export default function Home() {
           )}
         </Container>
       </section>
+
+      {/* Newly Added */}
+      {(loadingNewlyAdded || recentlyAdded.length > 0) && (
+        <section className="border-t border-border py-16 sm:py-20">
+          <Container>
+            <SectionHeader title="Newly Added" viewAllPath="/blog" />
+            {loadingNewlyAdded ? (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {[...Array(3)].map((_, i) => (
+                  <Skeleton key={i} className="h-80 rounded-2xl" />
+                ))}
+              </div>
+            ) : (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {recentlyAdded.map((article) => (
+                  <ArticleCard key={article.slug} article={article} badge={badgeForArticle(article)} />
+                ))}
+              </div>
+            )}
+          </Container>
+        </section>
+      )}
 
       {/* Latest articles */}
       <section className="border-t border-border bg-paper-raised py-16 sm:py-20">

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { formatDate } from "../../lib/format";
 
-export function ArticleCard({ article, variant = "default" }) {
+export function ArticleCard({ article, variant = "default", badge }) {
   const dateLabel = article.publishedAt ? formatDate(article.publishedAt) : "";
 
   if (variant === "featured") {
@@ -74,11 +74,12 @@ export function ArticleCard({ article, variant = "default" }) {
         )}
       </div>
       <div className="flex flex-1 flex-col gap-3 p-6">
-        {article.topicSlugs?.[0] && (
-          <span className="text-xs font-medium tracking-wide text-accent uppercase">
-            {article.topicSlugs[0].replace(/-/g, " ")}
-          </span>
-        )}
+        {badge ??
+          (article.topicSlugs?.[0] && (
+            <span className="text-xs font-medium tracking-wide text-accent uppercase">
+              {article.topicSlugs[0].replace(/-/g, " ")}
+            </span>
+          ))}
         <h3 className="font-serif text-xl leading-snug text-ink">{article.title}</h3>
         <p className="line-clamp-2 flex-1 text-sm text-ink-muted">{article.excerpt}</p>
         <p className="text-xs text-ink-faint">
