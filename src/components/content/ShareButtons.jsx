@@ -52,18 +52,19 @@ export function ShareButtons({ path, title }) {
   const [copied, setCopied] = useState(false);
   const url = `${BASE_URL}${path}`;
   const encodedUrl = encodeURIComponent(url);
-  const encodedTitle = encodeURIComponent(title);
+  const message = `📖 ${title}\n\nWorth a read — via Parivestra`;
+  const encodedMessage = encodeURIComponent(message);
 
   const links = [
     {
       label: "Share on X",
       Icon: XIcon,
-      href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+      href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedMessage}`,
     },
     {
       label: "Share on Facebook",
       Icon: FacebookIcon,
-      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedMessage}`,
     },
     {
       label: "Share on LinkedIn",
@@ -73,7 +74,7 @@ export function ShareButtons({ path, title }) {
     {
       label: "Share on WhatsApp",
       Icon: WhatsAppIcon,
-      href: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`,
+      href: `https://wa.me/?text=${encodeURIComponent(message + "\n" + url)}`,
     },
   ];
 
