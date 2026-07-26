@@ -35,6 +35,24 @@ function TagIcon() {
   );
 }
 
+function BookmarkIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M6 3.5h12a1 1 0 0 1 1 1V21l-7-4-7 4V4.5a1 1 0 0 1 1-1Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+const COVER_IMAGE_CLASS = {
+  social: "aspect-square mx-auto w-full max-w-md rounded-3xl object-cover",
+  default: "aspect-21/9 w-full rounded-3xl object-cover sm:aspect-3/1",
+};
+
 export default function ArticlePage() {
   const { slug } = useParams();
 
@@ -108,10 +126,16 @@ export default function ArticlePage() {
                   Offer
                 </div>
               )}
+              {article.type === "resource" && (
+                <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 rounded-full bg-status-good px-3 py-1.5 text-xs font-bold tracking-wide text-paper uppercase shadow-md">
+                  <BookmarkIcon />
+                  Reference
+                </div>
+              )}
               <img
                 src={article.coverImageUrl}
                 alt={article.coverImageAlt || article.title}
-                className="aspect-21/9 w-full rounded-3xl object-cover sm:aspect-3/1"
+                className={COVER_IMAGE_CLASS[article.type] || COVER_IMAGE_CLASS.default}
               />
             </div>
           </Container>
@@ -156,7 +180,7 @@ export default function ArticlePage() {
 
       <Container className="grid gap-12 py-14 md:grid-cols-[1fr_280px] md:items-start">
         <div className="max-w-2xl space-y-12">
-          <MarkdownRenderer content={article.contentMarkdown} />
+          <MarkdownRenderer content={article.contentMarkdown} numbered={article.type === "compilation"} />
           <KeyTakeaways points={article.keyTakeaways} />
           <FAQAccordion faqs={article.faqs} />
         </div>

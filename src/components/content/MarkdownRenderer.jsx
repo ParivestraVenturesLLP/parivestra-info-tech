@@ -6,12 +6,7 @@ function headingText(children) {
   return Array.isArray(children) ? children.join("") : String(children ?? "");
 }
 
-const components = {
-  h2: ({ children }) => (
-    <h2 id={slugify(headingText(children))} className="scroll-mt-24">
-      {children}
-    </h2>
-  ),
+const baseComponents = {
   h3: ({ children }) => (
     <h3 id={slugify(headingText(children))} className="scroll-mt-24">
       {children}
@@ -45,7 +40,27 @@ const components = {
     ),
 };
 
-export function MarkdownRenderer({ content }) {
+// `numbered` prefixes each H2 with a large ordinal (01, 02, ...), matching the
+// Compilation listing page's numbered-listicle identity, for compilation-type articles.
+export function MarkdownRenderer({ content, numbered = false }) {
+  let h2Count = 0;
+
+  const components = {
+    ...baseComponents,
+    h2: ({ children }) => {
+      h2Count += 1;
+      const index = h2Count;
+      return (
+        <h2 id={slugify(headingText(children))} className="scroll-mt-24 flex items-baseline gap-3">
+          {numbered && (
+            <span className="font-serif text-2xl text-accent/40">{String(index).padStart(2, "0")}</span>
+          )}
+          <span>{children}</span>
+        </h2>
+      );
+    },
+  };
+
   return (
     <div className="prose-article prose prose-lg max-w-none font-sans">
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
