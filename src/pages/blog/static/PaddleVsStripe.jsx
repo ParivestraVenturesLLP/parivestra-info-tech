@@ -119,6 +119,7 @@ export default function PaddleVsStripe() {
       seoTitle="Paddle vs Stripe for SaaS: When the Merchant of Record Model Makes Sense"
       seoDescription="Detailed comparison of Paddle vs Stripe for SaaS businesses: fees, tax handling, Merchant of Record explained, when each makes sense, and whether Paddle's higher fees are worth it for your software business."
       path="/blog/paddle-vs-stripe-saas"
+      type="comparison"
       dek="Decision Guide"
       title="Paddle vs Stripe for SaaS: When the Merchant of Record Model Makes Sense"
       excerpt="Fees, tax handling, and the Merchant of Record model explained — plus when Paddle's higher fees are actually worth it for your software business."

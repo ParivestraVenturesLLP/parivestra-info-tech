@@ -2,12 +2,14 @@ import { SEOHead } from "../seo/SEOHead";
 import { Container } from "../layout/Container";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { PageBadge } from "./PageBadge";
+import { ComparisonPanel } from "./ComparisonPanel";
 import { MarkdownRenderer } from "./MarkdownRenderer";
 import { KeyTakeaways } from "./KeyTakeaways";
 import { FAQAccordion } from "./FAQAccordion";
 import { RelatedResources } from "./RelatedResources";
 import { TableOfContents } from "./TableOfContents";
 import { extractHeadings } from "../../lib/toc";
+import { MAGNET_CATEGORIES, MAGNET_TYPE_TONES } from "../../data/magnetCategories";
 
 export function StaticArticleLayout({
   seoTitle,
@@ -23,7 +25,9 @@ export function StaticArticleLayout({
   faqs = [],
   relatedTopics = [],
   relatedArticles = [],
+  type,
 }) {
+  const category = MAGNET_CATEGORIES.find((c) => c.type === type);
   const headings = extractHeadings(bodyMarkdown);
 
   return (
@@ -51,7 +55,11 @@ export function StaticArticleLayout({
             ]}
           />
           <div className="mt-6">
-            <PageBadge>Article</PageBadge>
+            {category ? (
+              <PageBadge tone={MAGNET_TYPE_TONES[type]}>{category.label}</PageBadge>
+            ) : (
+              <PageBadge>Article</PageBadge>
+            )}
           </div>
           {dek && (
             <p className="mt-4 font-mono text-xs tracking-[0.2em] text-accent uppercase">{dek}</p>
@@ -65,6 +73,7 @@ export function StaticArticleLayout({
             {readingTimeMinutes ? ` · ${readingTimeMinutes} min read` : ""}
           </p>
         </Container>
+        {type === "comparison" && <ComparisonPanel title={title} />}
       </div>
 
       <Container className="grid gap-12 py-14 md:grid-cols-[1fr_280px] md:items-start">

@@ -144,6 +144,7 @@ export default function StripeVsRazorpay() {
       seoTitle="Stripe vs Razorpay: A Real Comparison for Indian Ecommerce Brands (2026)"
       seoDescription="Stripe vs Razorpay: which payment gateway is right for your Indian ecommerce or SaaS business? Full comparison of UPI support, pricing, developer experience, settlement times, and when to use both."
       path="/blog/stripe-vs-razorpay"
+      type="comparison"
       dek="Gateway Comparison"
       title="Stripe vs Razorpay: A Real Comparison for Indian Ecommerce Brands (2026)"
       excerpt="Which payment gateway is right for your Indian ecommerce or SaaS business? A full comparison of UPI support, pricing, developer experience, and settlement times."

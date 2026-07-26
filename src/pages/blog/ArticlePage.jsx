@@ -7,6 +7,7 @@ import { KeyTakeaways } from "../../components/content/KeyTakeaways";
 import { FAQAccordion } from "../../components/content/FAQAccordion";
 import { RelatedResources } from "../../components/content/RelatedResources";
 import { PageBadge } from "../../components/content/PageBadge";
+import { ComparisonPanel } from "../../components/content/ComparisonPanel";
 import { AuthorByline } from "../../components/content/AuthorByline";
 import { Breadcrumbs } from "../../components/content/Breadcrumbs";
 import { TableOfContents } from "../../components/content/TableOfContents";
@@ -19,6 +20,20 @@ import { MAGNET_CATEGORIES, MAGNET_TYPE_TONES } from "../../data/magnetCategorie
 import { extractHeadings } from "../../lib/toc";
 import { formatDate } from "../../lib/format";
 import NotFound from "../NotFound";
+
+function TagIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M20 12.5 12.5 20a1.5 1.5 0 0 1-2.12 0l-6.38-6.38a1.5 1.5 0 0 1 0-2.12L11.5 4H19a1 1 0 0 1 1 1v7.5Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <circle cx="15" cy="8" r="1.25" fill="currentColor" />
+    </svg>
+  );
+}
 
 export default function ArticlePage() {
   const { slug } = useParams();
@@ -86,11 +101,19 @@ export default function ArticlePage() {
       <div className="border-b border-border bg-paper-raised">
         {article.coverImageUrl && (
           <Container className="max-w-5xl pt-10 sm:pt-14">
-            <img
-              src={article.coverImageUrl}
-              alt={article.coverImageAlt || article.title}
-              className="aspect-21/9 w-full rounded-3xl object-cover sm:aspect-3/1"
-            />
+            <div className="relative">
+              {article.type === "deals" && (
+                <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 rounded-full bg-status-warning px-3 py-1.5 text-xs font-bold tracking-wide text-paper uppercase shadow-md">
+                  <TagIcon />
+                  Offer
+                </div>
+              )}
+              <img
+                src={article.coverImageUrl}
+                alt={article.coverImageAlt || article.title}
+                className="aspect-21/9 w-full rounded-3xl object-cover sm:aspect-3/1"
+              />
+            </div>
           </Container>
         )}
         <Container className="max-w-3xl py-10 sm:py-14">
@@ -128,6 +151,7 @@ export default function ArticlePage() {
             />
           </div>
         </Container>
+        {article.type === "comparison" && <ComparisonPanel title={article.title} />}
       </div>
 
       <Container className="grid gap-12 py-14 md:grid-cols-[1fr_280px] md:items-start">

@@ -3,6 +3,7 @@ import { Container } from "../components/layout/Container";
 import { Skeleton } from "../components/ui/Skeleton";
 import { EmptyState } from "../components/ui/EmptyState";
 import { StatCard } from "../components/content/StatCard";
+import { CategoryStatsBar, canChartTogether } from "../components/content/CategoryStatsBar";
 import { useFirestoreQuery } from "../hooks/useFirestoreQuery";
 import { getPublishedStatsByCategory } from "../lib/firestore/stats";
 
@@ -42,6 +43,7 @@ export default function StatisticsPage() {
           groups.map((group) => (
             <div key={group.category}>
               <h2 className="mb-5 font-serif text-2xl text-ink">{group.category}</h2>
+              {canChartTogether(group.items) && <CategoryStatsBar stats={group.items} />}
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {group.items.map((stat) => (
                   <StatCard key={stat.id} stat={stat} />

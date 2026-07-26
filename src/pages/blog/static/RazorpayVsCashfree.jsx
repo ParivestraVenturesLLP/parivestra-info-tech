@@ -150,6 +150,7 @@ export default function RazorpayVsCashfree() {
       seoTitle="Razorpay vs Cashfree vs PayU: Which Indian Payment Gateway is Actually Better?"
       seoDescription="Detailed comparison of Razorpay, Cashfree, and PayU for Indian ecommerce: pricing, settlement times, UPI support, developer experience, and which gateway to choose for your business."
       path="/blog/razorpay-vs-cashfree-vs-payu"
+      type="comparison"
       dek="Head to Head"
       title="Razorpay vs Cashfree vs PayU: Which Indian Payment Gateway is Actually Better?"
       excerpt="Pricing, settlement times, UPI support, and developer experience compared — and which Indian payment gateway to choose for your business."
