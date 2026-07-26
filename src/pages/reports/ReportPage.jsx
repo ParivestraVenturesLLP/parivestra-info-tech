@@ -5,6 +5,7 @@ import { Skeleton } from "../../components/ui/Skeleton";
 import { Button } from "../../components/ui/Button";
 import { MarkdownRenderer } from "../../components/content/MarkdownRenderer";
 import { AuthorByline } from "../../components/content/AuthorByline";
+import { ShareButtons } from "../../components/content/ShareButtons";
 import { Breadcrumbs } from "../../components/content/Breadcrumbs";
 import { useFirestoreQuery } from "../../hooks/useFirestoreQuery";
 import { getReportBySlug } from "../../lib/firestore/reports";
@@ -76,11 +77,14 @@ export default function ReportPage() {
             author={author}
             date={report.publishedAt ? formatDate(report.publishedAt) : "Draft"}
           />
-          {report.fileUrl && (
-            <Button href={report.fileUrl} variant="accent" size="md">
-              Download PDF {report.fileSizeLabel ? `(${report.fileSizeLabel})` : ""}
-            </Button>
-          )}
+          <div className="flex flex-wrap items-center gap-4">
+            <ShareButtons path={`/reports/${report.slug}`} title={report.title} />
+            {report.fileUrl && (
+              <Button href={report.fileUrl} variant="accent" size="md">
+                Download PDF {report.fileSizeLabel ? `(${report.fileSizeLabel})` : ""}
+              </Button>
+            )}
+          </div>
         </div>
 
         {report.coverImageUrl && (

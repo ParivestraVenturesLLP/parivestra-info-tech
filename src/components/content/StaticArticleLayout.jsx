@@ -7,6 +7,7 @@ import { MarkdownRenderer } from "./MarkdownRenderer";
 import { KeyTakeaways } from "./KeyTakeaways";
 import { FAQAccordion } from "./FAQAccordion";
 import { RelatedResources } from "./RelatedResources";
+import { ShareButtons } from "./ShareButtons";
 import { TableOfContents } from "./TableOfContents";
 import { extractHeadings } from "../../lib/toc";
 import { MAGNET_CATEGORIES, MAGNET_TYPE_TONES } from "../../data/magnetCategories";
@@ -68,10 +69,13 @@ export function StaticArticleLayout({
             {title}
           </h1>
           <p className="mt-5 text-lg text-ink-muted">{excerpt}</p>
-          <p className="mt-8 text-sm text-ink-faint">
-            Parivestra Research Desk · {date}
-            {readingTimeMinutes ? ` · ${readingTimeMinutes} min read` : ""}
-          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+            <p className="text-sm text-ink-faint">
+              Parivestra Research Desk · {date}
+              {readingTimeMinutes ? ` · ${readingTimeMinutes} min read` : ""}
+            </p>
+            <ShareButtons path={path} title={title} />
+          </div>
         </Container>
         {type === "comparison" && <ComparisonPanel title={title} />}
       </div>

@@ -6,6 +6,7 @@ import { MarkdownRenderer } from "../../components/content/MarkdownRenderer";
 import { KeyTakeaways } from "../../components/content/KeyTakeaways";
 import { FAQAccordion } from "../../components/content/FAQAccordion";
 import { RelatedResources } from "../../components/content/RelatedResources";
+import { ShareButtons } from "../../components/content/ShareButtons";
 import { PageBadge } from "../../components/content/PageBadge";
 import { ComparisonPanel } from "../../components/content/ComparisonPanel";
 import { AuthorByline } from "../../components/content/AuthorByline";
@@ -167,12 +168,13 @@ export default function ArticlePage() {
             {article.title}
           </h1>
           <p className="mt-5 text-lg text-ink-muted">{article.excerpt}</p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
             <AuthorByline
               author={author}
               date={article.publishedAt ? formatDate(article.publishedAt) : "Draft"}
               readingTimeMinutes={article.readingTimeMinutes}
             />
+            <ShareButtons path={`/blog/${article.slug}`} title={article.title} />
           </div>
         </Container>
         {article.type === "comparison" && <ComparisonPanel title={article.title} />}
