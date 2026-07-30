@@ -9,6 +9,7 @@ import { FAQAccordion } from "./FAQAccordion";
 import { RelatedResources } from "./RelatedResources";
 import { ShareButtons } from "./ShareButtons";
 import { TableOfContents } from "./TableOfContents";
+import { NativeBannerAd } from "../ads/NativeBannerAd";
 import { extractHeadings } from "../../lib/toc";
 import { MAGNET_CATEGORIES, MAGNET_TYPE_TONES } from "../../data/magnetCategories";
 
@@ -85,6 +86,7 @@ export function StaticArticleLayout({
           <MarkdownRenderer content={bodyMarkdown} />
           <KeyTakeaways points={keyTakeaways} />
           <FAQAccordion faqs={faqs} />
+          <NativeBannerAd />
         </div>
 
         <div className="space-y-8 md:sticky md:top-24">

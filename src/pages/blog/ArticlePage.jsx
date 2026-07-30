@@ -13,6 +13,7 @@ import { AuthorByline } from "../../components/content/AuthorByline";
 import { Breadcrumbs } from "../../components/content/Breadcrumbs";
 import { TableOfContents } from "../../components/content/TableOfContents";
 import { ReadingProgress } from "../../components/content/ReadingProgress";
+import { NativeBannerAd } from "../../components/ads/NativeBannerAd";
 import { useFirestoreQuery } from "../../hooks/useFirestoreQuery";
 import { getArticleBySlug, getRelatedArticles } from "../../lib/firestore/articles";
 import { getAuthorBySlug } from "../../lib/firestore/authors";
@@ -185,6 +186,7 @@ export default function ArticlePage() {
           <MarkdownRenderer content={article.contentMarkdown} numbered={article.type === "compilation"} />
           <KeyTakeaways points={article.keyTakeaways} />
           <FAQAccordion faqs={article.faqs} />
+          <NativeBannerAd />
         </div>
 
         <div className="space-y-8 md:sticky md:top-24">
