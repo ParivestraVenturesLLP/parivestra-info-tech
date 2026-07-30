@@ -4,6 +4,10 @@ import { PublicLayout } from "./components/layout/PublicLayout";
 import { Spinner } from "./components/ui/Spinner";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import BlogIndex from "./pages/blog/BlogIndex";
 import ArticlePage from "./pages/blog/ArticlePage";
 import TopicPage from "./pages/topics/TopicPage";
@@ -72,6 +76,10 @@ export default function App() {
         <Route path="/resource" element={<ResourcePage />} />
         <Route path="/deals-offers" element={<DealsOffersPage />} />
         <Route path="/comparison" element={<ComparisonPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsOfService />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route

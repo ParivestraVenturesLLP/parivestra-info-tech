@@ -11,12 +11,21 @@ const columns = [
       { to: "/reports", label: "Reports" },
     ],
   },
+  {
+    heading: "Company",
+    links: [
+      { to: "/about", label: "About" },
+      { to: "/contact", label: "Contact" },
+      { to: "/privacy-policy", label: "Privacy Policy" },
+      { to: "/terms", label: "Terms of Service" },
+    ],
+  },
 ];
 
 export function Footer() {
   return (
     <footer className="border-t border-border bg-paper-raised">
-      <Container className="grid gap-12 py-16 md:grid-cols-[1.4fr_1fr]">
+      <Container className="grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <Link to="/" className="flex w-fit items-center">
             <img src="/logo.png" alt="Parivestra" className="h-14 w-auto" />

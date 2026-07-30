@@ -13,6 +13,10 @@ const STATIC_PATHS = [
   "/resource",
   "/deals-offers",
   "/comparison",
+  "/about",
+  "/contact",
+  "/privacy-policy",
+  "/terms",
 ];
 
 function writeSitemap({ articles, topics, reports }) {
