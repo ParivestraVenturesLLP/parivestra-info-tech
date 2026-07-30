@@ -3,7 +3,6 @@ import { Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import { AdScripts } from "../ads/AdScripts";
 
 export function PublicLayout() {
   const location = useLocation();
@@ -19,7 +18,6 @@ export function PublicLayout() {
 
   return (
     <div className="flex min-h-screen flex-col bg-paper">
-      <AdScripts />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-paper"
