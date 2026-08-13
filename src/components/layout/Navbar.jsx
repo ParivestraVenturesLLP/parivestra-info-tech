@@ -5,17 +5,20 @@ import { MAGNET_CATEGORIES } from "../../data/magnetCategories";
 
 const links = [
   { to: "/blog", label: "Blog" },
-  { to: "/research", label: "Research" },
-  { to: "/statistics", label: "Statistics" },
-  { to: "/reports", label: "Reports" },
+  ...MAGNET_CATEGORIES.map((category) => ({ to: category.path, label: category.label })),
+];
+
+const RESEARCH_MENU = [
+  { path: "/statistics", label: "Statistics" },
+  { path: "/reports", label: "Reports" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [magnetOpen, setMagnetOpen] = useState(false);
-  const [magnetOpenMobile, setMagnetOpenMobile] = useState(false);
-  const magnetRef = useRef(null);
+  const [researchOpen, setResearchOpen] = useState(false);
+  const [researchOpenMobile, setResearchOpenMobile] = useState(false);
+  const researchRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -25,15 +28,15 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (!magnetOpen) return;
+    if (!researchOpen) return;
     const onClickOutside = (e) => {
-      if (magnetRef.current && !magnetRef.current.contains(e.target)) {
-        setMagnetOpen(false);
+      if (researchRef.current && !researchRef.current.contains(e.target)) {
+        setResearchOpen(false);
       }
     };
     document.addEventListener("mousedown", onClickOutside);
     return () => document.removeEventListener("mousedown", onClickOutside);
-  }, [magnetOpen]);
+  }, [researchOpen]);
 
   return (
     <header
@@ -63,22 +66,22 @@ export function Navbar() {
             </NavLink>
           ))}
 
-          <div className="relative" ref={magnetRef}>
+          <div className="relative" ref={researchRef}>
             <button
               type="button"
-              onClick={() => setMagnetOpen((v) => !v)}
-              aria-expanded={magnetOpen}
+              onClick={() => setResearchOpen((v) => !v)}
+              aria-expanded={researchOpen}
               className={`flex items-center gap-1 text-sm font-medium transition-colors ${
-                magnetOpen ? "text-accent" : "text-ink-muted hover:text-ink"
+                researchOpen ? "text-accent" : "text-ink-muted hover:text-ink"
               }`}
             >
-              Magnet
+              Research
               <svg
                 width="10"
                 height="10"
                 viewBox="0 0 10 10"
                 fill="none"
-                className={`transition-transform ${magnetOpen ? "rotate-180" : ""}`}
+                className={`transition-transform ${researchOpen ? "rotate-180" : ""}`}
               >
                 <path
                   d="M1.5 3.5L5 7l3.5-3.5"
@@ -90,20 +93,20 @@ export function Navbar() {
               </svg>
             </button>
 
-            {magnetOpen && (
-              <div className="absolute top-full left-1/2 z-50 mt-3 w-56 -translate-x-1/2 rounded-xl border border-border bg-paper py-2 shadow-lg">
-                {MAGNET_CATEGORIES.map((category) => (
+            {researchOpen && (
+              <div className="absolute top-full left-1/2 z-50 mt-3 w-48 -translate-x-1/2 rounded-xl border border-border bg-paper py-2 shadow-lg">
+                {RESEARCH_MENU.map((item) => (
                   <NavLink
-                    key={category.path}
-                    to={category.path}
-                    onClick={() => setMagnetOpen(false)}
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setResearchOpen(false)}
                     className={({ isActive }) =>
                       `block px-4 py-2 text-sm font-medium transition-colors ${
                         isActive ? "text-accent" : "text-ink-muted hover:bg-ink/5 hover:text-ink"
                       }`
                     }
                   >
-                    {category.label}
+                    {item.label}
                   </NavLink>
                 ))}
               </div>
@@ -152,17 +155,17 @@ export function Navbar() {
 
           <button
             type="button"
-            onClick={() => setMagnetOpenMobile((v) => !v)}
-            aria-expanded={magnetOpenMobile}
+            onClick={() => setResearchOpenMobile((v) => !v)}
+            aria-expanded={researchOpenMobile}
             className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-ink-muted hover:bg-ink/5 hover:text-ink"
           >
-            Magnet
+            Research
             <svg
               width="10"
               height="10"
               viewBox="0 0 10 10"
               fill="none"
-              className={`transition-transform ${magnetOpenMobile ? "rotate-180" : ""}`}
+              className={`transition-transform ${researchOpenMobile ? "rotate-180" : ""}`}
             >
               <path
                 d="M1.5 3.5L5 7l3.5-3.5"
@@ -174,19 +177,19 @@ export function Navbar() {
             </svg>
           </button>
 
-          {magnetOpenMobile && (
+          {researchOpenMobile && (
             <div className="flex flex-col gap-1 pl-4">
-              {MAGNET_CATEGORIES.map((category) => (
+              {RESEARCH_MENU.map((item) => (
                 <NavLink
-                  key={category.path}
-                  to={category.path}
+                  key={item.path}
+                  to={item.path}
                   onClick={() => {
                     setOpen(false);
-                    setMagnetOpenMobile(false);
+                    setResearchOpenMobile(false);
                   }}
                   className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink-muted hover:bg-ink/5 hover:text-ink"
                 >
-                  {category.label}
+                  {item.label}
                 </NavLink>
               ))}
             </div>
