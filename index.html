@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Monetag: register the push service worker (public/sw.js) -->
     <script>
-      self.options = {
-          "domain": "5gvci.com",
-          "zoneId": 11813606
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').catch(function (err) {
+            console.error('Monetag service worker registration failed:', err);
+          });
+        });
       }
-      self.lary = ""
-      importScripts('https://5gvci.com/act/files/service-worker.min.js?r=sw')
     </script>
 
     <!-- Google tag (gtag.js) -->
