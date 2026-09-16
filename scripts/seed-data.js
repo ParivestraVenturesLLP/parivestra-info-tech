@@ -2830,7 +2830,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/104/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1617347454431-f49d7ff5c3b1?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "Blinkit holds roughly 45% of India's quick-commerce market, with Instamart at 27% and Zepto at 21%.",
@@ -2863,7 +2863,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/105/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1636011203281-a76ae5a437dd?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "UPI is now live in nine countries, with Cambodia becoming the latest addition in June 2026 via a tie-up with ACLEDA Bank.",
@@ -2896,7 +2896,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/106/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1614064548237-096f735f344f?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "Synthetic voice attacks rose 149% at banks and 475% at insurers, per Pindrop's tracking.",
@@ -2929,7 +2929,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/107/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1618060932014-4deda4932554?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "5 billion passkeys are now in active use globally, per the FIDO Alliance's 2026 report.",
@@ -2962,7 +2962,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/108/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1623227413711-25ee4388dae3?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "The RBI's e-rupee pilot now spans 17 participating banks and roughly 6-7 million retail users.",
@@ -2994,7 +2994,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/109/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1605792657660-596af9009e82?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "Total stablecoin market cap reached $308 billion as of mid-August 2026, up 14.3% year-over-year.",
@@ -3027,7 +3027,7 @@ export const articlesToSeed = [
       "payments",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/110/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "India's NBFC sector managed roughly ₹48-50 trillion (₹48-50 lakh crore) as of March 2026, about 18-19% of systemic credit.",
@@ -3060,7 +3060,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/111/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1586227740560-8cf2732c1531?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "India is home to roughly 15 million freelancers, one of the largest freelance labor pools globally.",
@@ -3093,7 +3093,7 @@ export const articlesToSeed = [
       "tech-news",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/112/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "368 neobanks are verified globally as of July 2026, serving 1.46 billion users — but only 127 hold full banking licenses.",
@@ -3126,7 +3126,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/113/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1637763723578-79a4ca9225f7?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "India's insurtech ecosystem has 150+ active players with cumulative valuations crossing $15.8 billion and 2024 revenue of $0.9 billion — a 10x increase since 2019.",
@@ -3159,7 +3159,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/114/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1593672715438-d88a70629abe?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "India is on course to receive $137-140 billion in remittances in FY26, a new record.",
@@ -3191,7 +3191,7 @@ export const articlesToSeed = [
       "tech-news",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/115/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1614064642578-7faacdc6336e?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "The average company manages 305 SaaS applications; large enterprises run closer to 660-2,191 depending on how you count.",
@@ -3224,7 +3224,7 @@ export const articlesToSeed = [
       "tech-news",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/116/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1562408590-e32931084e23?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "Nvidia holds roughly 86% of the AI accelerator market, with FY2026 data-center revenue of $193.7 billion.",
@@ -3255,7 +3255,7 @@ export const articlesToSeed = [
     "topicSlugs": [
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/117/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "Flipkart's Big Billion Days 2026 is expected to start around September 23, with Flipkart Plus members getting early access.",
@@ -3288,7 +3288,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/118/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1675602488512-bdd631490fcb?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "Razorpay charges 2% standard domestic TDR with zero annual maintenance and zero setup fees.",
@@ -3321,7 +3321,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/119/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1615779167895-7e815e39b79b?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "Over 15 million Indian businesses use WhatsApp Business tools — the largest concentration of WhatsApp Business adoption anywhere.",
@@ -3354,7 +3354,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/120/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1728325444513-f6f7bdd0950a?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "94% of small merchants surveyed in a government-commissioned study had adopted UPI.",
@@ -3386,7 +3386,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/121/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1572195577046-2f25894c06fc?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "Blinkit leads market share at roughly 45%, ahead of Instamart's 27% and Zepto's 21%.",
@@ -3418,7 +3418,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/122/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1675116731363-c17d957f3444?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "Sustainable assets under management reached roughly $6.6 trillion in 2025, out of $62 trillion in total AUM tracked.",
@@ -3450,7 +3450,7 @@ export const articlesToSeed = [
       "payments",
       "fintech"
     ],
-    "coverImageUrl": "https://picsum.photos/id/123/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1667984390533-64bdefe719ea?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "UPI Lite lets users make small-value payments (typically under ₹500) without a PIN or internet connectivity per transaction, using a pre-loaded on-device wallet balance.",
@@ -3483,7 +3483,7 @@ export const articlesToSeed = [
       "tech-news",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/124/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1766066014237-00645c74e9c6?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "66% of service organizations now run AI agents in some form, up from 39% in 2025.",
@@ -3515,7 +3515,7 @@ export const articlesToSeed = [
       "payments",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/125/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1681735342773-d452708e87e7?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "Most telecom recharge cashback offers come from the payment app (UPI apps, wallets) processing the transaction, not from the telecom operator itself.",
@@ -3547,7 +3547,7 @@ export const articlesToSeed = [
       "fintech",
       "payments"
     ],
-    "coverImageUrl": "https://picsum.photos/id/126/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1584433144859-1fc3ab64a957?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "Velocity checks (limiting transaction frequency and amount per user in a given window) catch a large share of automated fraud attempts before manual review is even needed.",
@@ -3580,7 +3580,7 @@ export const articlesToSeed = [
       "fintech",
       "trending"
     ],
-    "coverImageUrl": "https://picsum.photos/id/127/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1587906697341-bfbde76785c7?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "PhonePe leads India's UPI market with roughly 46.2% share as of May 2026, ahead of Google Pay's 32.7% and Paytm's 7.9%.",
@@ -3613,7 +3613,7 @@ export const articlesToSeed = [
       "payments",
       "tech-news"
     ],
-    "coverImageUrl": "https://picsum.photos/id/128/1200/800",
+    "coverImageUrl": "https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?w=1200&q=80&fm=jpg&fit=crop",
     "coverImageAlt": "",
     "keyTakeaways": [
       "API-first banking infrastructure lets startups launch account, card, and payment products without becoming a licensed bank themselves.",
